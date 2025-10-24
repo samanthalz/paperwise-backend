@@ -1,4 +1,3 @@
-# uvicorn app.main:app --reload   .\venv\Scripts\activate.bat
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api import pdf_routes, chat_routes, recommendation_routes
@@ -9,7 +8,7 @@ app = FastAPI(title="PDF RAG Pipeline")
 origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://nextjs-fyp-tau.vercel.app", 
+    "https://nextjs-fyp-tau.vercel.app",
 ]
 
 app.add_middleware(
@@ -30,10 +29,13 @@ app.include_router(recommendation_routes.router)
 def root():
     return {"message": "🚀 FastAPI PDF RAG Pipeline is running successfully!"}
 
-# --- Port Binding for Deployment ---
+
+# --- Port Binding for Deployment (Render + Local) ---
 if __name__ == "__main__":
     import uvicorn
     import os
 
-    port = int(os.environ.get("PORT", 8000))  # Render assigns PORT automatically
-    uvicorn.run("app.main:app", host="0.0.0.0", port=port)
+    port = int(os.environ.get("PORT", 8000))
+
+    # Run app instance directly instead of string path
+    uvicorn.run(app, host="0.0.0.0", port=port)
