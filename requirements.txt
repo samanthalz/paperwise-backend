@@ -1,6 +1,6 @@
 accelerate==1.10.1
 acres==0.5.0
-adapters==1.2.0
+adapters
 aiohappyeyeballs==2.6.1
 aiohttp==3.12.15
 aiosignal==1.4.0
@@ -211,7 +211,7 @@ torchaudio==2.8.0
 torchvision==0.23.0
 tqdm==4.67.1
 traits==7.0.2
-transformers==4.56.2
+transformers>=4.51.3,<4.57.0
 transformers-stream-generator==0.0.5
 typer==0.16.1
 typing-inspection==0.4.1
