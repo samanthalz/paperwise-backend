@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api import pdf_routes, chat_routes, recommendation_routes
+from api import pdf_routes, chat_routes, recommendation_routes
 
 app = FastAPI(title="PDF RAG Pipeline")
 
