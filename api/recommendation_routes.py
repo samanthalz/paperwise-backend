@@ -1,12 +1,12 @@
 from fastapi import APIRouter, HTTPException
-from app.services.semantic_api import (
+from services.semantic_api import (
     resolve_paper,
     fetch_citations,
     fetch_references,
     fetch_recommendations,
     clean_papers
 )
-from app.services.specter_model import rank_by_similarity
+from services.specter_model import rank_by_similarity
 import httpx
 
 router = APIRouter()

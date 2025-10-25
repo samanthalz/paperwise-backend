@@ -9,7 +9,7 @@ import fitz  # PyMuPDF
 from typing import Union
 from urllib.parse import urlparse
 import hashlib
-from app.db.supabase_client import supabase
+from db.supabase_client import supabase
 
 def download_pdf(url: str, tmp_dir="tmp_pdfs"):
     """

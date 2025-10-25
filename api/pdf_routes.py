@@ -1,14 +1,14 @@
 from pathlib import Path
 import traceback, logging, os
 from fastapi import APIRouter, HTTPException, BackgroundTasks
-from app.models.pdf_models import PDFRequest
-from app.db.supabase_client import supabase
-from app.utils.pdf_utils import download_pdf, generate_pdf_thumbnail, replace_base64_images, rename_paper, move_paper, delete_paper, delete_folder
-from app.core.pdf_parser import parse_pdf
-from app.core.chunk_embed import process_markdown
-from app.services.llm_engine import RAG
-from app.services.img_summarizer import summarize_with_gemini_pil
-from app.core.retriever import Retriever
+from models.pdf_models import PDFRequest
+from db.supabase_client import supabase
+from utils.pdf_utils import download_pdf, generate_pdf_thumbnail, replace_base64_images, rename_paper, move_paper, delete_paper, delete_folder
+from core.pdf_parser import parse_pdf
+from core.chunk_embed import process_markdown
+from services.llm_engine import RAG
+from services.img_summarizer import summarize_with_gemini_pil
+from core.retriever import Retriever
 from sentence_transformers import SentenceTransformer
 from pydantic import BaseModel
 from typing import Optional

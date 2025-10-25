@@ -1,4 +1,3 @@
-# app/models/ask_models.py
 from pydantic import BaseModel
 
 class AskRequest(BaseModel):

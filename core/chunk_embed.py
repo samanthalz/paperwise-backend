@@ -4,7 +4,7 @@ from sentence_transformers import SentenceTransformer
 from langchain.text_splitter import MarkdownHeaderTextSplitter
 
 # import the supabase client
-from app.db.supabase_client import supabase  
+from db.supabase_client import supabase  
 
 # ----------------------------
 # Read Markdown

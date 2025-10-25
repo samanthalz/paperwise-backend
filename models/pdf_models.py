@@ -1,4 +1,3 @@
-# app/models/pdf_models.py
 from pydantic import BaseModel
 from typing import List
 

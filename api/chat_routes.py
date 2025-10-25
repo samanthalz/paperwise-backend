@@ -1,10 +1,10 @@
 import traceback, logging, os
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
-from app.models.chat_models import AskRequest
-from app.db.supabase_client import supabase
-from app.services.llm_engine import RAG
-from app.core.retriever import Retriever
+from models.chat_models import AskRequest
+from db.supabase_client import supabase
+from services.llm_engine import RAG
+from core.retriever import Retriever
 from sentence_transformers import SentenceTransformer
 
 logger = logging.getLogger(__name__)
