@@ -1,3 +1,5 @@
+# uvicorn main:app --reload
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api import pdf_routes, chat_routes, recommendation_routes
@@ -26,7 +28,7 @@ app.include_router(recommendation_routes.router)
 
 @app.get("/")
 def root():
-    return {"message": "🚀 FastAPI PDF RAG Pipeline is running successfully!"}
+    return {"message": "FastAPI PDF RAG Pipeline is running successfully!"}
 
 # --- Run (Render + Local) ---
 if __name__ == "__main__":
