@@ -42,7 +42,7 @@ def summarize_with_gemini_pil(image_elements, conv_res, api_key: str, doc_filena
     Summarize images using Gemini 2.5 Flash Lite with PIL images directly from Docling.
     Returns OrderedDict of {image_filename: summary_text}.
     """
-    genai.configure(api_key=api_key)
+    genai.configure(api_key=api_key)    
     model = genai.GenerativeModel("gemini-2.5-flash-lite")
     summaries = OrderedDict()
 

@@ -4,7 +4,7 @@ import google.generativeai as genai
 import re
 
 class RAG:
-    def __init__(self, retriever, llm_name="gemini-2.5-flash-lite", api_key=None):
+    def __init__(self, retriever, llm_name="gemini-2.5-flash-preview-09-2025", api_key=None):
         if not api_key:
             raise ValueError("Gemini API key required")
         genai.configure(api_key=api_key)

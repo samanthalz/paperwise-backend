@@ -3,3 +3,5 @@ venv
 .env
 tmp_pdfs
 tmp_thumbnails
+tests
+responses

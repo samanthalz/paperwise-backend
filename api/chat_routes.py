@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 # --- Setup retriever + RAG ---
 embedding_model = SentenceTransformer("google/embeddinggemma-300m")
 retriever = Retriever(supabase)
-rag = RAG(retriever=retriever, llm_name="gemini-2.5-flash-lite", api_key=os.getenv("GEMINI_API_KEY"))
+rag = RAG(retriever=retriever, llm_name="gemini-2.5-flash-preview-09-2025", api_key=os.getenv("GEMINI_API_KEY"))
 
 router = APIRouter()
 

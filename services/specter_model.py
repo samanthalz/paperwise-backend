@@ -21,7 +21,7 @@ async def rank_by_similarity(title: str, abstract: str, papers: list, top_k: int
     for idx in ranked_idx:
         p = papers[idx]
         ranked_papers.append({
-            **p,  # ✅ preserve all existing data (including externalIds)
-            "score": float(sims[idx]),  # add your similarity score
+            **p,  # preserve all existing data (including externalIds)
+            "score": float(sims[idx]),  # add similarity score
         })
     return ranked_papers
