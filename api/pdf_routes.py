@@ -92,7 +92,7 @@ def run_full_pipeline(pdf_url, pdf_id, extract_summary: bool = True):
 
         # Save embeddings and chunks
         supabase.table("papers").update({"checkpoint": "Saving embeddings and chunks"}).eq("pdf_id", pdf_id).execute()
-        md_path = f"{Path(pdf_path).stem}.md"
+        md_path = Path("tmp_markdown") / f"{Path(pdf_path).stem}.md"
         with open(md_path, "w", encoding="utf-8") as f:
             f.write(markdown_text)
         process_markdown(md_path, pdf_id=pdf_id)
@@ -188,7 +188,7 @@ class PDFIdRequest(BaseModel):
 async def process_existing_pdf_endpoint(data: PDFIdRequest, background_tasks: BackgroundTasks):
     pdf_id = data.pdf_id
 
-    # --- Check if PDF exists and has supabase_url ---
+    # Check if PDF exists and has supabase_url 
     resp = supabase.table("papers").select("*").eq("pdf_id", pdf_id).execute()
     if not resp.data:
         raise HTTPException(status_code=404, detail=f"PDF with id {pdf_id} not found")
@@ -198,7 +198,7 @@ async def process_existing_pdf_endpoint(data: PDFIdRequest, background_tasks: Ba
     if not pdf_url:
         raise HTTPException(status_code=400, detail=f"PDF with id {pdf_id} does not have a valid supabase_url")
 
-    # --- Check if already processed ---
+    # Check if already processed 
     if paper.get("processed", False):
         return {
             "status": "skipped",
@@ -207,7 +207,7 @@ async def process_existing_pdf_endpoint(data: PDFIdRequest, background_tasks: Ba
             "message": "PDF has already been processed"
         }
 
-    # --- Schedule background processing ---
+    # Schedule background processing
     background_tasks.add_task(run_full_pipeline, pdf_url, pdf_id, extract_summary=True)
 
 class RenameRequest(BaseModel):
@@ -237,7 +237,6 @@ async def move_pdf(req: MoveRequest):
     if not success:
         raise HTTPException(status_code=400, detail="Move failed")
     return {"success": True, "message": f"Moved {req.pdf_id} to folder {req.folder_id}"}
-
 
 @router.post("/delete_pdf/")
 async def delete_pdf(req: DeleteRequest):

@@ -3,5 +3,9 @@ venv
 .env
 tmp_pdfs
 tmp_thumbnails
+tmp_markdowns
 tests
 responses
+__pycache__/
+.pytest_cache
+*.py[cod]
