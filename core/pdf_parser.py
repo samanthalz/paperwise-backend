@@ -1,7 +1,5 @@
-# core/pdf_parser.py
 import time
 import logging
-from pathlib import Path
 from docling.datamodel.base_models import InputFormat
 from docling.datamodel.pipeline_options import PdfPipelineOptions, RapidOcrOptions, AcceleratorOptions, AcceleratorDevice
 from docling.document_converter import DocumentConverter, PdfFormatOption

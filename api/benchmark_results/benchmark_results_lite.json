@@ -1,0 +1,368 @@
+{
+  "1611.04684v1": {
+    "0": {
+      "question": "What are the main differences between the educational philosophies of the Bonaparte and Voltaire schools?",
+      "response": "```json\n{\n\"Answer\": \"The Bonaparte school focuses on developing good leaders through outdoor physical activities, maneuvers, and strategies, with specialties in horse riding and lances swords. In contrast, the Voltaire school aims to cultivate philosophers by encouraging independent thinking, concentrating mainly on indoor activities, and inculcating good moral values.\"\n}\n```",
+      "answer": "The Bonaparte school focuses on outdoor physical activities, maneuvers, and strategies, with a specialization in horse riding, lances, and swords. They aim to develop students into good leaders. The Voltaire school, on the other hand, encourages independent thinking and focuses on indoor activities. They aim to instill good moral values and develop students into philosophical thinkers.",
+      "Semantic": 0.8501070737838745,
+      "Time": 2.4865164756774902
+    },
+    "1": {
+      "question": "Which model performs the best for response selection, and how can we tell?",
+      "response": "{{'Answer': 'The KEHNN model performs the best for response selection. We can tell this because KEHNN achieves the highest scores across all evaluation metrics ($R_2@1$, $R_{10}@1$, $R_{10}@2$, and $R_{10}@5$) in Table \\ref{exp:response} compared to all other baseline models.'}}",
+      "answer": "The KEHNN model performs the best for response selection. This is evident because it achieves the highest scores across all metrics (R$2$@1, R${10}$@1, R${10}$@2, and R${10}$@5) compared to all other models in the table.",
+      "Semantic": 0.8353735208511353,
+      "Time": 1.5467381477355957
+    },
+    "2": {
+      "question": "Which model performs best on the Ubuntu dataset for text lengths between 60 and 90 words?",
+      "response": "{{'Answer': 'KEHNN performs best on the Ubuntu dataset for text lengths between 60 and 90 words, with an accuracy of 0.785.'}}",
+      "answer": "KEHNN",
+      "Semantic": 0.569860577583313,
+      "Time": 1.6559534072875977
+    },
+    "3": {
+      "question": "What is the role of the knowledge gates in the KEHNN architecture?",
+      "response": "{'Answer': 'The knowledge gate in the KEHNN architecture is a non-linear unit that controls how much information from the word representation is kept in the new knowledge-enhanced representation and how much information from the prior knowledge flows into it. Specifically, it fuses the semantic information carried by the prior knowledge into the representation of words to generate a knowledge-enhanced representation for each word. This process helps to filter out noise from irrelevant words and strengthen useful information from relevant words.'}",
+      "answer": "The knowledge gates are responsible for selecting relevant information from the knowledge base and incorporating it into the model's hidden state.",
+      "Semantic": 0.7097184658050537,
+      "Time": 1.653191089630127
+    },
+    "4": {
+      "question": "How does the average number of answers per question differ between the training and development sets? What might be a possible explanation for this difference?",
+      "response": "{{'Answer': 'The average number of answers per question in the training set is 6.36, and in the development (Dev) set, it is 5.48. The training set has a higher average number of answers per question than the development set. The table containing this information is Table \\ref{exp:qastat} in the \"Answer Selection\" subsection under the \"Experiments\" section.'}}",
+      "answer": "The training set has a higher average number of answers per question (6.36) compared to the development set (5.48). This suggests that questions in the training set tend to have more potential answers associated with them than those in the development set.",
+      "Semantic": 0.6001816987991333,
+      "Time": 1.712937355041504
+    }
+  },
+  "1611.05742v3": {
+    "0": {
+      "question": "What is the function of the ReOrth Layer in the Projection Block of the Grassmann Network architecture?",
+      "response": "{{'Answer': 'The ReOrth (re-orthonormalization) layers are developed to normalize the output matrices of the FRMap layers so that they can maintain basic orthogonality. This normalization is achieved by performing QR decomposition on the input matrix $\\bm{X}_{k-1} = \\bm{Q}_{k-1}\\bm{R}_{k-1}$ and then setting the output $\\bm{X}_{k}= \\bm{X}_{k-1}\\bm{R}_{k-1}^{-1} = \\bm{Q}_{k-1}$, resulting in an orthonormal matrix $\\bm{Q}_{k-1}$. Additionally, this function is stated to also take a role of performing a non-linear activation with the QR factorization, analogous to activation functions in ConvNets.'}}",
+      "answer": "The ReOrth Layer re-orthogonalizes the output of the FRMap Layer.",
+      "Semantic": 0.7840307950973511,
+      "Time": 2.3590009212493896
+    },
+    "1": {
+      "question": "Which pooling method is the most accurate for the AFEW database?",
+      "response": "{{'Answer': 'The paper mentions that W-ProjPooling typically outperforms A-ProjPooling (Pooling across projections). Figure \\ref{Fig3} (a) shows the accuracy for AFEW when comparing pooling methods: A-ProjPooling accuracy is around 32\\% (yellow bar for GrNet-1Block) or 28\\% (yellow bar for GrNet-2Blocks, less clear from the bar comparison, but W-ProjPooling is consistently better). Looking specifically at Figure \\ref{Fig3} (a) for the AFEW database, the bar for W-ProjPooling (dark red) is slightly higher than the bar for A-ProjPooling (yellow) for the architecture represented by the last set of bars (which likely corresponds to GrNet with pooling layers, as both A-ProjPooling and W-ProjPooling are compared there). However, the text provides a more direct comparison on pooling layer performance: \"As studied in Fig.\\ref{Fig3} (a), W-ProjPooling typically outperforms A-ProjPooling.\" Since W-ProjPooling is superior to A-ProjPooling, W-ProjPooling is the most accurate pooling method mentioned between the two explicit pooling options.'}}",
+      "answer": "W-ProjPooling",
+      "Semantic": 0.597923219203949,
+      "Time": 2.006471872329712
+    },
+    "2": {
+      "question": "Which method performs best on the PaSC dataset for the handheld testing scenario (PaSC2), and how does its performance compare to other methods?",
+      "response": "{{'Answer': 'The method that performs best on the PaSC dataset for the handheld testing scenario (PaSC2) is **SPDNet** with an accuracy of **72.83\\%**. Among the proposed GrNet variants, **GrNet-2Blocks** performs the best on PaSC2 with **72.76\\%** accuracy, which is slightly lower than SPDNet but still higher than GrNet-1Block (72.51\\%) and GrNet-0Block (63.92\\%). Compared to other Grassmann learning methods, GrNet-2Blocks (72.76\\%) outperforms DCC (67.04\\%), GDA (67.49\\%), GGDA (68.41\\%), and PML (68.32\\%) on PaSC2. It also outperforms VGGDeepFace (68.24\\%) and DeepO2P (60.14\\%) on PaSC2.}}",
+      "answer": "The method that performs best on the PaSC dataset for the handheld testing scenario (PaSC2) is SPDNet, with an accuracy of 72.83%. This performance is slightly higher than GrNet-2Blocks (72.76%) and significantly higher than other methods like VGGDeepFace (68.24%) and DeepO2P (60.14%).",
+      "Semantic": 0.8680689930915833,
+      "Time": 1.8392927646636963
+    }
+  },
+  "1611.07718v2": {
+    "0": {
+      "question": "Which network architecture has the highest accuracy on the CIFAR-10 dataset?",
+      "response": "{'Answer': 'The DMRNet-Wide of depth 50 achieved the best result on CIFAR-10 with a 3.57% testing error, which is superior to existing state-of-the-art results. In Table 3, DMRNet-Wide (depth=50) has a CIFAR-10 error of 3.57%.'}",
+      "answer": "DMRNet-Wide",
+      "Semantic": 0.6372956037521362,
+      "Time": 1.8109467029571533
+    },
+    "1": {
+      "question": "What is the difference between a deep residual network and a network built by stacking inception-like blocks?",
+      "response": "```json\n{\n  \"Answer\": \"A network built by stacking inception-like blocks assembles two residual branches in parallel and sums up the outputs from the two residual branches along with the identity mapping. In contrast, a deep residual network is built by stacking residual blocks sequentially, where each block has a residual branch and an identity mapping. Specifically, for the inception-like block, if $\\\\mathbf{x}_{2t}$ is the input to the $t$-th block, the output $\\\\mathbf{x}_{2(t+1)}$ is given by $\\\\mathbf{x}_{2(t+1)} = H_{2t}(\\\\mathbf{x}_{2t}) + H_{2t+1}(\\\\mathbf{x}_{2t}) + \\\\mathbf{x}_{2t}$, where $H_{2t}(\\\\cdot)$ and $H_{2t+1}(\\\\cdot)$ represent the transition functions (residual branches). The paper doesn't explicitly detail the structure of a *deep residual network* built by stacking *only* inception-like blocks to compare with the merge-and-run block structure, but it contrasts the merge-and-run block with the inception-like block. The inception-like block (Figure 1(b)) assembles two residual branches in parallel and aggregates their outputs before adding the identity mapping, resulting in a narrower intermediate representation compared to the merge-and-run block.\"\n}\n```",
+      "answer": "Deep residual networks have skip connections that allow the gradient to flow directly from one layer to another, while networks built by stacking inception-like blocks do not.",
+      "Semantic": 0.7142639756202698,
+      "Time": 2.170187473297119
+    },
+    "2": {
+      "question": "What is the difference between the residual block and the merge-and-run block?",
+      "response": "```json\n{\n\"Answer\": \"The basic unit in Residual Networks (ResNets) is a **residual block**, which consists of a residual branch and an identity mapping.\\n\\nThe **merge-and-run block** is a novel building block that assembles residual branches in parallel using a **merge-and-run mapping**. This mapping involves two steps: first, **Merge** (Average the inputs of these residual branches), and second, **Run** (add the average to the output of each residual branch as the input of the subsequent residual branch, respectively).\"\n}\n```",
+      "answer": "The residual block assembles two residual branches sequentially, while the merge-and-run block assembles the same two residual branches in parallel.",
+      "Semantic": 0.7131337523460388,
+      "Time": 1.7289931774139404
+    },
+    "3": {
+      "question": "How does the training loss of DMRNet compare to that of ResNet on the CIFAR-10 dataset with L = 30?",
+      "response": "{{'Answer': 'Figure 7 shows the convergence curves of ResNets and DMRNets over CIFAR-10. The training losses of DMRNets are smaller than those of ResNets during the optimization process for L=30 (which corresponds to the first plot in the top row of Figure 7).'}}",
+      "answer": "The training loss of DMRNet is lower than that of ResNet on the CIFAR-10 dataset with L = 30.",
+      "Semantic": 0.7494208216667175,
+      "Time": 1.4411799907684326
+    },
+    "4": {
+      "question": "Which network has the shortest average path length when L = 9?",
+      "response": "The question asks for the network with the shortest average path length when $L=9$.\n\nThe paper discusses the average lengths for ResNets, DILNets (deep inception-like neural networks), and DMRNets (deep merge-and-run neural networks) in the section \"Shorter paths\":\nThe average lengths are given as:\n*   ResNets: $\\frac{2B}{3}L + 2$\n*   DILNets: $\\frac{2B}{3}L + 2$ (Wait, the text states $\\frac{4}{3}L$ and $\\frac{2}{3}L$ for an example, and then gives a general formula. Let's re-examine the general formula provided for the three networks based on $L$ building blocks, where each residual branch has $B$ layers.\n    *   ResNets (sequence of $2L$ residual blocks, total depth $2L$): Average length is $\\frac{2B}{3}L + 2$. *This seems to be a general formula derived from a specific interpretation or a typo, as the preceding paragraph stated ResNet has $2L$ blocks and DILNet/DMRNet has $L$ blocks, where $B$ is the layers per residual branch.* Let's look at the specific calculation provided for the example shown in Figure 1 where $B=2$ layers per residual branch:\n        *   Average length of two residual blocks (ResNet structure with 2 blocks): 2.\n        *   Average length of corresponding inception-like block (DILNet structure with 1 block): $\\frac{4}{3}$.\n        *   Average length of corresponding merge and run block (DMRNet structure with 1 block): $\\frac{2}{3}$.\n    *   The general formula provided later, assuming $2L$ blocks for ResNet, $L$ blocks for DILNet/DMRNet, and $B$ layers per residual branch:\n        *   ResNets: $\\frac{2B}{3}L + 2$\n        *   DILNets: $\\frac{2B}{3}L + 2$ (The text says this for both ResNets and DILNets, which seems inconsistent with the example $\\frac{4}{3}$ vs $2$).\n        *   DMRNets: $\\frac{B}{3}L + 2$\n\nLet's use the specific path distribution data presented in Figure 3 (Caption 3), which shows the distribution of path lengths for three networks (ResNet, DILNet, DMRNet) for two values of $L$: $L=9$ (Left Plot) and $L=24$ (Right Plot). The average length (avg length $\\pm$ std) is reported in the caption of Figure 3.\n\nFor $L=9$ (Left Plot in Figure 3):\n*   ResNet: $20.7 \\pm 6.24$\n*   DILNet: $14.4 \\pm 2.63$\n*   DMRNet: $9.0 \\pm 2.83$\n\nComparing the average path lengths for $L=9$:\n*   ResNet: 20.7\n*   DILNet: 14.4\n*   DMRNet: 9.0\n\nThe shortest average path length is 9.0, corresponding to the DMRNet.\n\n{{'Answer': 'DMRNet'}}",
+      "answer": "DMRNet",
+      "Semantic": 0.2946283221244812,
+      "Time": 3.9614484310150146
+    },
+    "5": {
+      "question": "Which model has the lowest Top-1 validation error on ImageNet?",
+      "response": "{{'Answer': 'The text mentions the Top-1 validation error for ResNet-101 and DMRNet on ImageNet in Table 5, but it does not explicitly state which model has the lowest Top-1 validation error on ImageNet among all models discussed, only that the DMRNet performs the best compared to the ResNet-101 variants in that table.'}}",
+      "answer": "ResNet-101 from the reference paper reports top-1 validation error of 23.60 which is lower than ResNet-101 reevaluated (26.41) and DMRNet (23.66)",
+      "Semantic": 0.6062119007110596,
+      "Time": 2.523967742919922
+    },
+    "6": {
+      "question": "Does sharing the first convolutional layer and the last fully connected layer improve the accuracy of the merge-and-run mapping?",
+      "response": "{{'Answer': 'Yes, sharing the first convolutional layer and the last fully connected layer improves the accuracy of the merge-and-run mapping, as shown by the lower error rates in the \"w/o sharing\" row compared to the \"w/ sharing\" row in Table 3 for both Identity and Merge-and-run mappings on CIFAR-10 and CIFAR-100 datasets.'}}",
+      "answer": "Yes.",
+      "Semantic": 0.309314489364624,
+      "Time": 2.5323851108551025
+    },
+    "7": {
+      "question": "How does the classification error of a residual network change as the average path length increases?",
+      "response": "{{'Answer': 'When the average path length is small (e.g., $\\leqslant 15$ for 3 residual blocks or $\\leqslant 21$ for 6 residual blocks), the testing error becomes smaller as the average length increases. Conversely, when the path length is large, the testing error becomes larger as the length increases. This suggests that shorter paths result in higher accuracy for very deep networks.'}}",
+      "answer": "The classification error of a residual network generally increases as the average path length increases.",
+      "Semantic": 0.6764789819717407,
+      "Time": 2.459418535232544
+    }
+  },
+  "1611.03780v2": {
+    "0": {
+      "question": "How does GeoCUTS perform compared to other clusterings for highly active users?",
+      "response": "{{'Answer': 'For highly active users in the US, GeoCUTS performs comparably to DMA and Grid clusterings in terms of the B-metric (balance), with a value of 1.5 for all three, as shown in Table 5. The text also states that \"GeoCUTS performs comparably to other clusterings for highly active users\" in terms of the B-metric.'}}",
+      "answer": "GeoCUTS performs comparably to other clusterings for highly active users.",
+      "Semantic": 0.6396774053573608,
+      "Time": 36.89147901535034
+    },
+    "1": {
+      "question": "How is the Hilbert space-filling curve constructed?",
+      "response": "{{'Answer': 'The Hilbert curve, which is a space-filling curve with a fractal-like structure, is constructed recursively up to any desired level by dividing the space into cells. This construction can be seen in the first three steps shown in Figure 1 (Image 6). The construction is used in the GeoCUTS algorithm for seed selection by embedding the graph nodes onto a line using the Hilbert curve and dividing the line into $M$ pieces, each with almost the same number of nodes, to spread seed nodes uniformly across different parts of the graph.'}}",
+      "answer": "The Hilbert space-filling curve is constructed recursively. The curve starts with a simple square, and then at each subsequent iteration, the curve is subdivided into four smaller squares. The curve is then drawn through each of these squares in a specific order.",
+      "Semantic": 0.7681315541267395,
+      "Time": 1.89744234085083
+    },
+    "2": {
+      "question": "How does the performance of GeoCUTS compare to the Grid method in identifying highly mobile clusters when the number of clusters is increased from approximately 25 to 50?",
+      "response": "{{'Answer': 'When the number of clusters is increased from approximately 25 to 50 for highly mobile users in France, the percentage of queries from clusters with a Q-metric of at least 0.75 drops from 94% to 78% for GeoCUTS, while for the Grid method it drops from 83% to 74%. For a Q-metric of at least 0.8, the percentage drops from 58% to 42% for GeoCUTS, and from 37% to 24% for the Grid method. For a Q-metric of at least 0.85, the percentage drops from 10% to 11% for GeoCUTS (with a slight increase, though the general trend for higher thresholds is decreasing), and from 11% to 5% for the Grid method.'}}",
+      "answer": "GeoCUTS consistently outperforms the Grid method in identifying highly mobile clusters, regardless of the number of clusters. However, the performance of both methods decreases as the number of clusters increases.",
+      "Semantic": 0.5664645433425903,
+      "Time": 2.0549044609069824
+    },
+    "3": {
+      "question": "What is the relationship between the query graph and the interference graph?",
+      "response": "{{'Answer': \"The relationship between the query graph and the interference graph is that the interference graph is derived from the query graph through a \"folding\" operation. The query graph is a bipartite graph with users and regions as nodes, where edges represent the number of queries a user made in a region ($a_{ik}$). The interference graph, which is between regions, is obtained by \"folding\" this bipartite query graph. Specifically, the unnormalized edge weight $q_{kk'}$ in the interference graph (representing interference between region $k$ and region $k'$) is calculated as $q_{kk'}=\\sum_{i}a_{ik}a_{ik'}$, which is the sum over all users $i$ of the product of the number of queries user $i$ made in region $k$ and region $k'$ (as shown in Equation 1 and depicted in Image 2).\"}}",
+      "answer": " The interference graph is a folded version of the query graph. The nodes in the interference graph represent regions, and the edges represent the interference between regions. The edge weights in the interference graph are calculated from the edge weights in the query graph.",
+      "Semantic": 0.818891704082489,
+      "Time": 2.562910556793213
+    },
+    "4": {
+      "question": "Which metropolitan area is predicted by the GeoCUTS algorithm to include San Francisco, Berkeley, and Palo Alto, but not Sacramento?",
+      "response": "The question asks which metropolitan area is predicted by the GeoCUTS algorithm to include San Francisco, Berkeley, and Palo Alto, but not Sacramento.\n\nThe text mentions an example of the GeoCUTS algorithm's output in the caption for Image 7:\n\"Figure 4: The GeoCUTS algorithm applied to user queries from the United States. The algorithm automatically identifies metropolitan areas, correctly predicting, for example, that the Bay Area includes San Francisco, Berkeley, and Palo Alto, but not Sacramento.\"\n\nThe metropolitan area that GeoCUTS predicts to include San Francisco, Berkeley, and Palo Alto, but not Sacramento, is the **Bay Area**.\n\n{{'Answer': 'Bay Area'}}",
+      "answer": "The Bay Area.",
+      "Semantic": 0.4628864526748657,
+      "Time": 2.055628538131714
+    },
+    "5": {
+      "question": "Which metropolitan areas are correctly identified by the GeoCUTS algorithm in France?",
+      "response": "{{'Answer': 'The GeoCUTS algorithm correctly identifies metropolitan areas in France such as Paris, Bordeaux, and Lyon, as well as regions like Alsace and Normandy.'}}",
+      "answer": "Paris, Bordeaux, and Lyon.",
+      "Semantic": 0.43707025051116943,
+      "Time": 1.7101340293884277
+    },
+    "6": {
+      "question": "Which clustering algorithm produced the smallest cut size for highly active users in the US dataset, and how much smaller was it compared to the cut size produced by grid partitioning?",
+      "response": "The question asks about the smallest cut size produced by a clustering algorithm for **highly active users in the US dataset** and the comparison to grid partitioning's cut size.\n\nBased on the provided text:\n1. **Location of Cut Size Comparison:** The text mentions cut size comparison in the paragraph preceding Table 3: \"Finally, we compare GeoCUTS to other clusterings with respect to cut size (see Table 3) on the US log-normalized graph with grid size 0.250.250.25. It is clear that the GeoCUTS algorithm produces better cut sizes compared to DMA and grid partitioning.\"\n2. **Identifying the Algorithm and Data Subset:** Table 3 (Image 5) compares GeoCUTS and Grid partitioning for \"HA\" (Highly Active) and \"HM\" (Highly Mobile) users in the US.\n3. **Extracting Values from Table 3 (Image 5):**\n    * For Highly Active (HA) users in the US:\n        * **GeoCUTS cut size:** 4%\n        * **Grid partitioning cut size:** 15%\n\n4. **Calculating the Difference:**\n    * The cut size produced by GeoCUTS was $15\\% - 4\\% = 11\\%$ smaller than grid partitioning.\n\nThe clustering algorithm that produced the smallest cut size for highly active users in the US dataset was **GeoCUTS** (4%), and it was **11% smaller** than the cut size produced by grid partitioning (15%).\n\n{{'Answer': 'The GeoCUTS algorithm produced the smallest cut size (4%) for highly active users in the US dataset, which was 11% smaller than the cut size produced by grid partitioning (15%).'}}",
+      "answer": "Both GeoCUTS and Linear Embedding produced the smallest cut size for highly active users, with a cut size of 4%. This is 11% smaller than the cut size produced by grid partitioning, which had a cut size of 15%.",
+      "Semantic": 0.6229934692382812,
+      "Time": 2.2707674503326416
+    },
+    "7": {
+      "question": "Which method performs best for highly active users in the US?",
+      "response": "The question asks which method performs best for highly active users in the US. The paper evaluates different clustering algorithms using the Q-metric (to quantify interference) and the B-metric (to quantify balance).\n\nWe need to look at the performance metrics for \"US Highly Active\" users.\n\nFrom Caption 1, specifically Table 1(a) for Q-metric:\n| Method | US Highly Active (Avg Q-metric) | US Highly Active (Query-w. avg Q-metric) |\n|---|---|---|\n| GeoCUTS | 87% | 86% |\n| DMA | 84% | 85% |\n| Grid | 69% | 70% |\n\nFrom Caption 3 for B-metric (where lower is better, as balance is good):\n| Method | US Highly Active (B-metric $\\times 100$) |\n|---|---|\n| GeoCUTS | 1.5 |\n| DMA | 1.5 |\n| Grid | 1.5 |\n\nFrom Caption 0 for Cut Size (Table 3, where lower is better):\n| Method | US Highly Active (Cut Size %) |\n|---|---|\n| GeoCUTS | 4% |\n| DMA | 7% |\n| Grid | 15% |\n| LE | 4% |\n| Hilbert | 7% |\n\n**Interpretation:**\n1.  **Q-metric (Interference/Quality):** GeoCUTS performs best, having the highest average and query-weighted average Q-metrics (87% and 86% respectively) compared to DMA (84%, 85%) and Grid (69%, 70%).\n2.  **B-metric (Balance):** GeoCUTS performs equally well as DMA (1.5), and both are better than Grid (which has a higher B-metric, see Table 5(a) where None normalization yields 0.06 for HA B-metric, but the comparison in Table 3 suggests balance is comparable). Caption 3 states: \"GeoCUTS performs comparably to other clusterings for highly active users\".\n3.  **Cut Size (Table 3):** GeoCUTS achieves the best cut size (4%), tied with Linear Embedding (LE).\n\nSince GeoCUTS shows the best performance in terms of the primary quality metric (Q-metric) and achieves the best (lowest) cut size, and performs comparably on balance, **GeoCUTS** is the best performing method for highly active users in the US based on the provided evidence.\n\n{{'Answer': 'GeoCUTS'}}",
+      "answer": "Both GeoCUTS and DMA perform equally well for highly active users in the US.",
+      "Semantic": 0.5583781599998474,
+      "Time": 3.6416332721710205
+    }
+  },
+  "1611.04363v2": {
+    "0": {
+      "question": "Which method performed best according to the P@1 metric for the QA-Expert task, and how much better did it perform compared to the average P@1 score of the D2V method? ",
+      "response": "The user is asking to identify the best performing method based on the P@1 metric for the **QA-Expert** task from Table 1, and compare its P@1 score to the average P@1 score of the **D2V** method for the same task.\n\n1.  **Identify the relevant data in Table 1 for the QA-Expert task and P@1 metric:**\n    The QA-Expert results are in the left block of Table 1. The metrics listed are P@1, P@3, P@5, MAP, and Rprec. We need the P@1 column.\n\n2.  **Find the best performing method based on P@1 for QA-Expert:**\n    Looking at the P@1 column under the 'QA-Expert' section:\n    *   LM (max): 36.8\n    *   LM (avg): 35.5\n    *   BM25 (max): 36.6\n    *   BM25 (avg): 41.4\n    *   LDA (max): 35.5\n    *   LDA (avg): 32.9\n    *   WMD (max): 40.6\n    *   WMD (avg): 38.2\n    *   D2V (max): 36.3\n    *   D2V (avg): 29.6\n    *   RankSVM: 40.8\n    *   WeakFG: **52.8**\n\n    The method with the highest P@1 score is **WeakFG** at 52.8.\n\n3.  **Calculate the average P@1 score of the D2V method for QA-Expert:**\n    D2V has two reported scores for P@1:\n    *   D2V (max): 36.3\n    *   D2V (avg): 29.6\n    The average P@1 score for D2V is the average of these two values:\n    Average D2V P@1 = $(36.3 + 29.6) / 2 = 65.9 / 2 = 32.95$.\n\n4.  **Calculate how much better WeakFG performed compared to the average D2V P@1 score:**\n    Difference = WeakFG P@1 - Average D2V P@1\n    Difference = $52.8 - 32.95 = 19.85$.\n\nThe best method is WeakFG (52.8). It performed 19.85 points better than the average P@1 score of the D2V method (32.95).\n\n{{'Answer': 'The WeakFG method performed best according to the P@1 metric for the QA-Expert task with a score of 52.8. The average P@1 score for the D2V method (calculated as the mean of its max (36.3) and avg (29.6) scores, which is 32.95) is 32.95. Therefore, WeakFG performed 19.85 points better than the average P@1 score of the D2V method (52.8 - 32.95 = 19.85).'}}",
+      "answer": "The WeakFG method achieved the highest P@1 score for the QA-Expert task with a score of 52.8. This is 23.2% higher than the average P@1 score of the D2V method, which was 29.6. ",
+      "Semantic": 0.6533083319664001,
+      "Time": 3.6763811111450195
+    },
+    "1": {
+      "question": "What is the relationship between the decline probability of an expert and whether or not they have a \"friend\" who has already declined?",
+      "response": "```json\n{\n\"Answer\": \"The paper states that the decline probability of an expert is correlated with whether or not the expert has a \\\"friend\\\" who has already declined. The visual evidence in Figure 1 confirms this correlation across different datasets, as the decline probability is consistently higher when an expert has a friend who has declined (orange bars) compared to when they do not (blue bars).\"\n}\n```",
+      "answer": "The decline probability of an expert is higher if they have a \"friend\" who has already declined.",
+      "Semantic": 0.627464771270752,
+      "Time": 2.2226758003234863
+    }
+  },
+  "1608.02784v2": {
+    "0": {
+      "question": "Which system from Ortiz et al. achieved the highest BLEU and METEOR scores, and how does it compare to the CCA inference algorithm in terms of performance?",
+      "response": "{{'Answer': 'The SMT (statistical machine translation) system from Ortiz et al. achieved the highest BLEU score of 43.7 and the highest METEOR score of 35.6 among the systems listed under \"Ortiz et al.\" in Table 2. In comparison, the CCA inference algorithm achieved a BLEU score of 26.1 and a METEOR score of 25.6. Therefore, the SMT system outperformed the CCA algorithm in terms of both BLEU and METEOR scores on the test set, with BLEU being 17.6 points higher and METEOR being 10.0 points higher for SMT.'}}",
+      "answer": "The SMT system from Ortiz et al. achieved the highest BLEU score (43.7) and METEOR score (35.6) among their tested systems. While the SMT system outperforms the CCA inference algorithm in terms of BLEU score, the CCA algorithm achieves a slightly higher METEOR score (25.6 vs 25.5).",
+      "Semantic": 0.8368635773658752,
+      "Time": 2.4419093132019043
+    },
+    "1": {
+      "question": "What is the difference between the outputs of the machine translation system (SMT) and the CCA inference?",
+      "response": "{{'Answer': 'The paper indicates that the Statistical Machine Translation (SMT) system, based on phrase-based machine translation, relies heavily on the training set captions and learns how to map images to sentences in a way that does not generalize very well outside the training set. In contrast, the CCA inference system generates a more diverse set of captions. Specifically, the SMT system generated 359 unique captions out of 2,004 test instances, while the CCA system generated 496 unique captions, an increase of 38.1%. Furthermore, for highly ranked captions (ranking $\\geq 4$), the SMT system achieved a higher BLEU score (49.70) and METEOR score (40.10) compared to the CCA system (BLEU 41.80, METEOR 33.10), suggesting the CCA outputs are not as closely aligned with the reference sentences as the SMT outputs for those specific cases, despite the human evaluations showing a flaw in relying solely on MT evaluation metrics.'}}",
+      "answer": "The SMT outputs are literal translations of the images, while the CCA outputs take into account the context of the images and generate more natural-sounding descriptions.",
+      "Semantic": 0.6867214441299438,
+      "Time": 2.7520906925201416
+    },
+    "2": {
+      "question": "Which system, CCA or SMT, generally performs better when the caption is of low quality (average rank less than 3)?",
+      "response": "The question asks which system, CCA or SMT, generally performs better when the caption is of low quality, defined as having an average rank less than 3. The relevant information to answer this is in **Caption 0**, which is a description of Table 3 containing the average ranking results.\n\nFrom Caption 0 (Table 3):\n| slice | CCA < 3 | CCA $\\ge$ 3 |\n|---|---|---|\n| SMT < 3 | M:1.77, C:1.64 | M:1.92, C:3.71 |\n| SMT $\\ge$ 3 | M:3.42, C:1.47 | M:3.46, C:3.54 |\n\nWe are interested in the case where the caption is of **low quality**, which the table seems to define by looking at the average ranks of the generated captions. The question specifies \"when the caption is of low quality (average rank less than 3)\". This likely refers to the reference captions' quality or the quality of the *other* system's generated caption for that instance.\n\nLet's interpret the table slices based on the context of human evaluation (Caption 5 and the text preceding Table 3): Human raters were presented with a reference caption, an SMT caption, and a CCA caption, and rated them on adequacy (1 to 5).\n\nTable 3 shows average ranks based on the *ranks* of the generated captions (M for SMT rank, C for CCA rank). The text preceding the table says: \"The results show that our system tends to score higher for images which are highly ranked (by both the SMT system and CCA), but tends to score lower for images which are lower ranked.\"\n\nThe slices are:\n1. **SMT < 3** and **CCA < 3**: Cases where *both* SMT and CCA generated captions that were ranked poorly (average rank < 3).\n   - M: 1.77, C: 1.64. CCA (1.64) is slightly lower/better than SMT (1.77).\n2. **SMT < 3** and **CCA $\\ge$ 3**: Cases where SMT ranked poorly, but CCA ranked well (average rank $\\ge$ 3).\n   - M: 1.92, C: 3.71. CCA (3.71) performs much better than SMT (1.92).\n3. **SMT $\\ge$ 3** and **CCA < 3**: Cases where SMT ranked well, but CCA ranked poorly.\n   - M: 3.42, C: 1.47. SMT (3.42) performs much better than CCA (1.47).\n4. **SMT $\\ge$ 3** and **CCA $\\ge$ 3**: Cases where both ranked well.\n   - M: 3.46, C: 3.54. CCA (3.54) is slightly better than SMT (3.46).\n\nThe question asks about the performance **when the caption is of low quality (average rank less than 3)**. This most directly corresponds to the cases where *at least one* system produced a low-ranked caption.\n\nIf \"low quality caption\" refers to the *reference* captions or the overall set of images where low-quality descriptions were common, we should look at the rows/columns labeled with `< 3`. The text states: \"The results show that our system tends to score higher for images which are highly ranked (by both the SMT system and CCA), but tends to score lower for images which are lower ranked.\"\n\nLet's focus on the cells where at least one system produced a low-ranked caption (i.e., any case involving a row labeled SMT < 3 or a column labeled CCA < 3).\n\nIf we interpret \"low quality\" to mean the **CCA caption was low quality (CCA < 3)**, we look at the first column:\n*   If SMT was also low quality (SMT < 3): CCA (1.64) vs SMT (1.77). SMT is slightly better (higher rank).\n*   If SMT was high quality (SMT $\\ge$ 3): CCA (1.47) vs SMT (3.42). SMT is much better (higher rank).\nIn this scenario (CCA providing low quality), SMT generally performs better or significantly better.\n\nIf we interpret \"low quality\" to mean the **SMT caption was low quality (SMT < 3)**, we look at the first row:\n*   If CCA was also low quality (CCA < 3): SMT (1.77) vs CCA (1.64). SMT is slightly better (higher rank).\n*   If CCA was high quality (CCA $\\ge$ 3): SMT (1.92) vs CCA (3.71). CCA is significantly better (higher rank).\n\nThe most straightforward interpretation relating to the systems' performance under low quality is often observed where one system fails significantly compared to the other. The text preceding the table highlights that CCA scores lower when images are lower ranked. This implies CCA struggles more when the caption quality (presumably the reference quality context for that image set) is low.\n\nLet's re-examine the data points where *either* system generated a low-quality caption (rank < 3):\n1. (CCA < 3, SMT < 3): SMT Avg Rank = 1.77, CCA Avg Rank = 1.64. SMT is slightly better (higher rank).\n2. (CCA < 3, SMT $\\ge$ 3): SMT Avg Rank = 3.42, CCA Avg Rank = 1.47. SMT is much better.\n3. (CCA $\\ge$ 3, SMT < 3): SMT Avg Rank = 1.92, CCA Avg Rank = 3.71. CCA is much better.\n\nIf we consider the average rank *for the system in question* when the *other* system's caption was low quality (rank < 3):\n*   When SMT captions are low quality (SMT < 3, row 1): CCA rank is 1.64, SMT rank is 1.77. SMT is slightly better.\n*   When CCA captions are low quality (CCA < 3, column 1): SMT rank is 3.42 (in row SMT $\\ge$ 3) or 1.77 (in row SMT < 3).\n\nThe question specifically asks about the system performance **when the caption is of low quality (average rank less than 3)**. This phrasing points to the *set of instances* where the *output* being evaluated is low quality.\n\nIf we focus on the instances where **CCA generated a low-quality caption (CCA < 3, Column 1)**:\nThe average rank achieved by SMT in these instances is 1.77 (when SMT also produced low quality) and 3.42 (when SMT produced high quality). In both cases, SMT's rank (1.77 and 3.42) is greater than CCA's rank (1.64 and 1.47, respectively). **SMT generally performs better.**\n\nIf we focus on the instances where **SMT generated a low-quality caption (SMT < 3, Row 1)**:\nThe average rank achieved by CCA in these instances is 1.64 (when CCA also produced low quality) and 3.71 (when CCA produced high quality). CCA's rank (3.71) is significantly better than SMT's rank (1.92) in the second case.\n\nThe text supports the idea that CCA performs worse for lower-ranked images: \"The results show that our system tends to score higher for images which are highly ranked... but tends to score lower for images which are lower ranked.\" This suggests CCA degrades more significantly when quality is low.\n\nLooking at the cell representing low quality for CCA (**CCA < 3**):\n*   In this subset, SMT has average ranks of 1.77 and 3.42.\n*   CCA has average ranks of 1.64 and 1.47.\nSince a higher rank is better, SMT generally has a higher average rank than CCA when CCA is performing poorly (ranks < 3).\n\nWhen CCA is ranked low ($\\text{CCA} < 3$): SMT's average rank is $\\ge 1.77$, while CCA's average rank is $\\le 1.64$. Therefore, SMT generally performs better (has a higher average rank).\n\n{{'Answer': 'SMT'}}",
+      "answer": "It is difficult to definitively say which system performs better for low-quality captions based solely on the provided data. However, we can observe some trends:\n\n1. When the SMT average rank is below 3, the CCA average rank is also lower (1.64 vs. 1.77).\n2. When the SMT average rank is 3 or higher, the CCA average rank is significantly higher (3.54 vs. 3.46).\n\nThis suggests that CCA might perform relatively better for low-quality captions, but more data and analysis are needed for a conclusive answer.",
+      "Semantic": 0.6865968108177185,
+      "Time": 6.271671533584595
+    },
+    "3": {
+      "question": "What is the purpose of the singular value decomposition step in the CCA algorithm?",
+      "response": "{{'Answer': 'The singular value decomposition (SVD) step is applied to the matrix $D_{1}^{-\\frac{1}{2}}\\Omega D_{2}^{-\\frac{1}{2}}$ (where $D_1$ and $D_2$ are diagonal matrices derived from the input and output feature covariances, and $\\Omega$ is the cross-covariance matrix) to obtain linear projections of the random vectors that have maximal correlation. Specifically, the SVD on this matrix, $D_{1}^{-\\frac{1}{2}}\\Omega D_{2}^{-\\frac{1}{2}}\\approx U\\Sigma V^{\\top}$, allows for the determination of the projection matrices $U$ and $V$, which are then used to define the projection functions $u(x)$ and $v(y)$ that maximize the correlation between the projected views.'}}",
+      "answer": "The singular value decomposition step is used to find the projection matrices U and V.",
+      "Semantic": 0.7594109773635864,
+      "Time": 2.3842926025390625
+    },
+    "4": {
+      "question": "What is the relationship between the input space and the output space in CCA inference?",
+      "response": "{{'Answer': 'The relationship in CCA inference is that both the inputs and the outputs are projected to a low-dimensional space using projection functions $u: \\mathcal{X} \\rightarrow \\mathbb{R}^m$ and $v: \\mathcal{Y} \\rightarrow \\mathbb{R}^m$. The goal of this projection is to ensure that corresponding inputs ($x$) and outputs ($y$) are projected to points that are close to each other in this low-dimensional space, which is quantified by a similarity measure $\\rho(u(x), v(y))$. The decoding process then happens in this low-dimensional space.'}}",
+      "answer": "The input space and the output space are related by a cosine similarity measure.",
+      "Semantic": 0.6036789417266846,
+      "Time": 2.5289971828460693
+    },
+    "5": {
+      "question": "What is the role of the temperature variable t in the CCA decoding algorithm?",
+      "response": "{{'Answer': 'The temperature variable $t$ in the CCA decoding algorithm, which uses simulated annealing with a Metropolis-Hastings sampler, is used to exponentiate by a $\\\\frac{1}{t}$ term the unnormalized distribution being sampled from. This temperature $t$ is started at $T=10,000$ and multiplied by $\\\\tau=0.995$ at each step. The role of decreasing $t$ is to allow the sampler to start with an exploratory phase (high temperature, large jumps) and then transition to making smaller jumps as it gets closer to parts of the search space where most of the probability mass is concentrated (low temperature).'}}",
+      "answer": "The temperature variable t controls the probability of accepting a new candidate solution y. As t decreases, the probability of accepting a worse solution decreases.",
+      "Semantic": 0.6233119964599609,
+      "Time": 2.0596776008605957
+    },
+    "6": {
+      "question": "What is the relationship between BLEU score and human ranking for CCA and SMT systems?",
+      "response": "{{'Answer': 'The correlation between BLEU scores and human ranking is not high for both the CCA and SMT systems. Specifically, the correlation between the x-axis (ranking) and y-axis (BLEU scores) for CCA is 0.30, and for the SMT system, it is 0.31.'}}",
+      "answer": "The correlation between BLEU scores and human ranking is not high for either CCA or SMT systems.",
+      "Semantic": 0.718772292137146,
+      "Time": 1.9611365795135498
+    }
+  },
+  "1611.02654v2": {
+    "0": {
+      "question": "Which model performed the best on the SICK dataset according to the MSE metric?",
+      "response": "{{'Answer': 'The model labeled \"+ Uni-ST\" performed the best on the SICK dataset according to the MSE metric, with an MSE of 0.270.'}}",
+      "answer": "The supervised model performed the best on the SICK dataset according to the MSE metric.",
+      "Semantic": 0.5832937955856323,
+      "Time": 1.5845849514007568
+    },
+    "1": {
+      "question": "What is the effect of pre-training with the ordering task on the ROUGE-L score for extractive summarization?",
+      "response": "{{'Answer': 'For extractive summarization, pre-training with the ordering task resulted in an increase in the ROUGE-L score. Specifically, for a summary length of 75b, the ROUGE-L score increased from 12.79 (From scratch) to 13.25 (Pre-train ord.). For a summary length of 275b, the ROUGE-L score increased from 33.69 (From scratch) to 34.27 (Pre-train ord.).'}}",
+      "answer": "Pre-training with the ordering task increases the ROUGE-L score for extractive summarization.",
+      "Semantic": 0.7759130597114563,
+      "Time": 2.4082839488983154
+    },
+    "2": {
+      "question": "Which model performs the best for the order discrimination task on the Accidents dataset and how does it compare to the other data-driven approaches?",
+      "response": "{'Answer': \"The proposed model achieves the best performance for the order discrimination task on the Accidents dataset with a mean accuracy of 0.944, as shown in Table 1. It outperforms other data-driven approaches like Entity-Grid (0.904), HMM (0.942), Graph (0.846), Window (Recurrent) (0.840), Window (Non-recurrent) (0.864), and Seq2seq (0.930).\"}",
+      "answer": "The proposed model in this paper achieves the best performance for the order discrimination task on the Accidents dataset with an accuracy of 0.944. It outperforms the other data-driven approaches, namely Window (Recurrent) with 0.840, Window (Recursive) with 0.864, and Seq2seq with 0.930.",
+      "Semantic": 0.9000570774078369,
+      "Time": 1.642171859741211
+    },
+    "3": {
+      "question": "What can you say about the relationship between the sentences in a document based on the t-SNE embeddings?",
+      "response": "{{'Answer': \"The t-SNE embeddings of the sentence representations learned by the model show that it captures high-level structure in the documents. Specifically, the embeddings are color-coded by the position of the sentence in the source abstract, and this visualization shows that the structure is learned, generalizing well to unseen text (Image 1).\"}}",
+      "answer": "Sentences that are closer together in the embedding space are more semantically similar than those that are farther apart.",
+      "Semantic": 0.45331692695617676,
+      "Time": 1.6351113319396973
+    },
+    "4": {
+      "question": "How does the proposed model compare to the other models in terms of accuracy on the NIPS Abstracts dataset?",
+      "response": "{{'Answer': 'On the NIPS Abstracts dataset, the proposed model achieves an Accuracy of 51.35 and a Kendall\\'s tau (\u03c4) of 0.32. This outperforms all other baseline models listed for this dataset, including the Window network (Accuracy: 41.26, \u03c4: 0.19), Seq2seq model (Accuracy: 37.18, \u03c4: 0.27), RNN Decoder (Accuracy: 40.25, \u03c4: 0.17), and Entity Grid (Accuracy: 30.10, \u03c4: 0.09). Random guessing yields an Accuracy of 15.39 and \u03c4 of 0.'}}",
+      "answer": "The proposed model has the highest accuracy on the NIPS Abstracts dataset, with an accuracy of 51.55.",
+      "Semantic": 0.7540102601051331,
+      "Time": 1.7934741973876953
+    }
+  },
+  "1701.03077v10": {
+    "0": {
+      "question": "How does the shape of the IRLS weight function change as the shape parameter \u03b1 increases?",
+      "response": "```json\n{\n\"Answer\": \"The shape of the IRLS weight function changes with the shape parameter $\\\\alpha$ as follows: for all values of $\\\\alpha$, the derivative (which is the weight function for IRLS) is approximately linear when $|x| < c$. If $\\\\alpha = 2$, the magnitude of the derivative remains linearly proportional to the residual's magnitude. If $\\\\alpha = 1$, the derivative's magnitude saturates to a constant $1/c$ as $|x|$ grows larger than $c$. If $\\\\alpha < 1$, the derivative's magnitude begins to decrease as $|x|$ grows larger than $c$ (the derivative is \\\"redescending\\\"), meaning the effect of an outlier diminishes as its residual increases. This diminishing effect of outliers becomes more pronounced as $\\\\alpha$ becomes more negative, approaching $-\\\\infty$ where an outlier with residual magnitude larger than $3c$ is almost completely ignored.\"\n}\n```",
+      "answer": "The IRLS weight function becomes more peaked and concentrated around zero as the shape parameter \u03b1 increases.",
+      "Semantic": 0.7721021771430969,
+      "Time": 1.9435193538665771
+    },
+    "1": {
+      "question": "How do the reconstructed faces in the \"Mean Reconstruction\" differ from those in the \"Sampled Reconstruction\"?",
+      "response": "{{'Answer': 'The reconstructed faces in the \"Mean Reconstruction\" are smoother and more coherent, representing the average output of the decoder for a given latent input, while the faces in the \"Sampled Reconstruction\" show more noise and artifacts, reflecting samples drawn from the full conditional probability distribution, which includes variation beyond the mean, particularly noticeable in the \"Pixels + RGB\" case where the samples are heavily corrupted with noise.'}}",
+      "answer": "The reconstructed faces in the \"Mean Reconstruction\" are smoother and less detailed than those in the \"Sampled Reconstruction\". This is because the mean reconstruction is based on the average of all the possible reconstructions, while the sampled reconstruction is based on a single sample from the distribution.",
+      "Semantic": 0.8109064698219299,
+      "Time": 2.199573516845703
+    },
+    "2": {
+      "question": "How does the performance of the adaptive model compare to the fixed model with different values of \u03b1?",
+      "response": "{{'Answer': 'When using a fixed $\\\\alpha$ for all wavelet coefficients in the unsupervised monocular depth estimation task, the performance (measured by error metrics) is generally improved compared to the baseline L1 loss ($\\\\alpha=1$ gives a smoothed L1 loss). However, no single fixed value of $\\\\alpha$ is optimal across all metrics and noise levels. For instance, in Table 2, the fixed $\\\\alpha=1$ model performs better on most metrics than fixed $\\\\alpha=0$ or fixed $\\\\alpha=2$ models. Specifically, $\\\\alpha=1$ and $\\\\alpha=0$ outperform $\\\\alpha=2$ (L2 loss) on average error. The performance with fixed $\\\\alpha$ values is outperformed by both the annealing strategy ($\\\\alpha=2\\\\to 0$) and the adaptive strategy ($\\\\alpha\\\\in(0,2)$), indicating that a single fixed $\\\\alpha$ is suboptimal compared to a tuned or adaptive robustness.'}}",
+      "answer": "The adaptive model consistently outperforms the fixed model for all values of \u03b1.",
+      "Semantic": 0.5213085412979126,
+      "Time": 2.1973466873168945
+    },
+    "3": {
+      "question": "On which dataset did the gRCC* algorithm achieve the largest relative improvement over the RCC algorithm, and by approximately how much did it improve?",
+      "response": "The question asks about the relative improvement of the $\\text{gRCC}^{*}$ algorithm over the $\\text{RCC}$ algorithm on which dataset, and by approximately how much.\n\nThis information is likely to be found in the section discussing the clustering task where $\\text{RCC}$ and $\\text{gRCC}^{*}$ are compared. I will look at the paragraph discussing clustering and Table 4 (Image 3).\n\nThe paragraph states: \"In Figure 6 we show the adjusted mutual information(AMI, the metric used by [32]) of the resulting clusteringfor each value of $\\alpha$ on the datasets used in [32], and inTable 4 we report the AMI for the best-performingvalue of $\\alpha$ for each dataset as \u201cgRCC*\u201d.\"\n\nTable 4 (Image 3) provides the following data:\n| Dataset | RCC | gRCC* | Rel. Impr. |\n|---|---|---|---|\n| YaleB | 0.975 | 0.975 | 0.4% |\n| COIL-100 | 0.957 | 0.962 | 11.6% |\n| MNIST | 0.893 | 0.901 | 7.9% |\n| YTF | 0.874 | 0.888 | 31.9% |\n| Pendigits | 0.854 | 0.871 | 15.1% |\n| Mice Protein | 0.638 | 0.650 | 0.2% |\n| Reuters | 0.533 | 0.561 | 1.1% |\n| Shuttle | 0.513 | 0.488 | 0.9% |\n| RCV1 | 0.442 | 0.338 | 25.2% |\n\nThe \"Rel. Impr.\" column shows the relative improvement of $\\text{gRCC}^{*}$ over $\\text{RCC}$.\n\nThe largest relative improvement is **31.9%** achieved on the **YTF** dataset.\n\nThe corresponding text confirms this: \"This improvement demonstrates the gains that can be achieved by introducingrobustness as a hyperparameter and tuning it accordingly.\" and the table shows the largest relative improvement (31.9%) for YTF.\n\nThe answer format requires a direct answer.\n\n{{'Answer': 'The gRCC* algorithm achieved the largest relative improvement over the RCC algorithm on the YTF dataset, with an approximate improvement of 31.9%.'}}",
+      "answer": "The gRCC* algorithm achieved the largest relative improvement over the RCC algorithm on the YTF dataset, with a relative improvement of approximately 31.9%.",
+      "Semantic": 0.7576087117195129,
+      "Time": 3.5714786052703857
+    },
+    "4": {
+      "question": "What is the relationship between the shape parameter \u03b1 and the shape of the loss function?",
+      "response": "```json\n{\n\"Answer\": \"The shape parameter $\\\\alpha$ controls the robustness of the loss function. Specifically:\\n- As $\\\\alpha$ approaches 2, the loss approaches the $L_2$ loss (squared error).\\n- When $\\\\alpha=1$, the loss is a smoothed form of $L_1$ loss (Charbonnier loss).\\n- When $\\\\alpha$ approaches 0, the loss limit yields Cauchy (Lorentzian) loss.\\n- When $\\\\alpha=-2$, the loss reproduces Geman-McClure loss.\\n- As $\\\\alpha$ approaches negative infinity, the loss becomes Welsch (Leclerc) loss.\\n\\nFurthermore, for gradient descent:\\n- If $\\\\alpha=2$, the derivative's magnitude stays linearly proportional to the residual's magnitude.\\n- If $\\\\alpha=1$, the derivative's magnitude saturates to a constant $1/c$ as $|x|$ grows larger than $c$.\\n- If $\\\\alpha<1$, the derivative's magnitude begins to decrease as $|x|$ grows larger than $c$ (the influence \\\"redescends\\\"), meaning outliers have less effect during gradient descent, with the effect diminishing further as $\\\\alpha$ becomes more negative.\"\n}\n```",
+      "answer": "The shape parameter \u03b1 controls the shape of the loss function. As \u03b1 increases, the loss function becomes more peaked, and as \u03b1 decreases, the loss function becomes more flat.",
+      "Semantic": 0.7709625959396362,
+      "Time": 38.13918900489807
+    },
+    "5": {
+      "question": "What is the effect of replacing the loss function in the \"Baseline\" network with the \"adaptive\" loss over wavelet coefficients?",
+      "response": "{{'Answer': 'Replacing the loss function in the \"Baseline\" network with the \"adaptive\" loss over wavelet coefficients (using the NLL of the general distribution) for unsupervised monocular depth estimation on the KITTI dataset results in a reduction of average error by approximately 17% compared to the baseline, and outperforms fixed or annealed $\\\\alpha$ strategies.'}}",
+      "answer": "Replacing the loss function in the \"Baseline\" network with the \"adaptive\" loss over wavelet coefficients results in significantly improved depth estimates.",
+      "Semantic": 0.7740325927734375,
+      "Time": 3.4662842750549316
+    },
+    "6": {
+      "question": "Which method for setting the shape parameter of the proposed loss function achieved the best performance in terms of average error? How much improvement did it offer compared to the reproduced baseline?",
+      "response": "The question asks for the best performing method for setting the shape parameter ($\\alpha$) of the proposed loss function in terms of average error, and the improvement offered compared to the reproduced baseline, specifically in the context of unsupervised monocular depth estimation (as this task involves reporting average error against a reproduced baseline). This information is found in the section discussing the depth estimation results (Table 2 in Image 5).\n\nFrom Table 2 (Image 5):\n\n1.  **Reproduced Baseline Average Error (Avg):** 0.358\n2.  **Methods for setting $\\alpha$ and their Average Errors (Avg):**\n    *   Ours, fixed $\\alpha=1$: 0.356\n    *   Ours, fixed $\\alpha=0$: 0.350\n    *   Ours, fixed $\\alpha=2$: 0.349\n    *   Ours, annealing $\\alpha=2 \\to 0$: 0.341\n    *   Ours, adaptive $\\alpha \\in (0,2)$: **0.332**\n\nThe method that achieved the best performance (lowest average error) is the **\"adaptive $\\alpha \\in (0,2)$\"** strategy, with an average error of **0.332**.\n\n**Improvement Calculation:**\nImprovement = Reproduced Baseline Error - Best Method Error\nImprovement = $0.358 - 0.332 = 0.026$\n\nThe text summarizing this result states: \"Overall, we see that just replacing the loss function of [42] with our adaptive loss on wavelet coefficients reduces average error by $\\sim 17\\%$.\"\n\nLet's verify the percentage improvement:\nPercentage Improvement = $(\\frac{\\text{Reproduced Baseline Error} - \\text{Best Error}}{\\text{Reproduced Baseline Error}}) \\times 100$\nPercentage Improvement = $(\\frac{0.358 - 0.332}{0.358}) \\times 100 = (\\frac{0.026}{0.358}) \\times 100 \\approx 7.26\\%$\n\nThe paper explicitly states that the reduction is $\\sim 17\\%$. We must use the values provided in the table to calculate the improvement in terms of the absolute reduction. The question asks \"How much improvement did it offer compared to the reproduced baseline?\" which can be interpreted as the absolute reduction.\n\nThe best method is the **\"adaptive $\\alpha \\in (0,2)$\"** strategy, which resulted in an average error of 0.332, offering an absolute reduction of $0.026$ compared to the reproduced baseline average error of 0.358.\n\n{{'Answer': 'The method that achieved the best performance in terms of average error for unsupervised monocular depth estimation was the \"adaptive $\\\\alpha \\\\in (0,2)$\" strategy, with an average error of 0.332. This offered an absolute improvement of 0.026 compared to the reproduced baseline average error of 0.358 (a reduction of approximately 7.26% based on the provided table values, though the text claims an overall reduction of $\\\\sim 17\\\\%$ when using this adaptive loss on wavelet coefficients).'}}",
+      "answer": "The \"adaptive $\\power \\in (0, 2)$\" strategy, where each wavelet coefficient has its own shape parameter that is optimized during training, achieved the best performance in terms of average error. It reduced the average error by approximately 17% compared to the reproduced baseline.",
+      "Semantic": 0.6249305605888367,
+      "Time": 3.214451551437378
+    },
+    "7": {
+      "question": "Why did the authors choose to use a nonlinearity to curve \u03b1 before fitting the cubic hermite spline?",
+      "response": "{{'Answer': 'The authors chose to use a nonlinearity to curve $\\\\alpha$ before fitting the cubic hermite spline because the log partition function $\\\\log(Z(\\\\alpha))$ is difficult to evaluate for arbitrary inputs. The nonlinearity is designed to increase knot density near $\\\\alpha = 2$ and decrease knot density when $\\\\alpha > 4$. This allows for a more accurate approximation of $\\\\log(Z(\\\\alpha))$ by fitting an evenly-sampled cubic hermite spline in the curved space.'}}",
+      "answer": "The authors chose to use a nonlinearity to curve \u03b1 before fitting the cubic hermite spline because it allows for increased knot density near \u03b1 = 2 and decreased knot density when \u03b1 > 4. This helps to better approximate the log partition function, which is difficult to evaluate for arbitrary inputs.",
+      "Semantic": 0.9236370325088501,
+      "Time": 2.0481390953063965
+    },
+    "8": {
+      "question": "What is the range of values for the shape parameter \u03b1?",
+      "response": "{{'Answer': 'The shape parameter $\\alpha$ is a real number ($\\alpha \\in \\mathbb{R}$), and the loss function has special cases or limits at $\\alpha=2$, $\\alpha=1$, $\\alpha=0$, $\\alpha=-2$, $\\alpha \\to -\\infty$, and $\\alpha \\to +\\infty$. The provided text explicitly states $\\alpha \\in \\mathbb{R}$ as the range of the shape parameter.'}}",
+      "answer": "The range of values for the shape parameter \u03b1 is from 0 to 2.",
+      "Semantic": 0.7350111603736877,
+      "Time": 1.7675962448120117
+    },
+    "9": {
+      "question": "How does the performance of gFGR change as the shape parameter \u03b1 increases?",
+      "response": "{{'Answer': 'The performance of gFGR, as shown in Figure 4, changes with the shape parameter $\\\\alpha$ as follows: for high-noise inputs, more negative values of $\\\\alpha$ are preferable, while for low-noise inputs, values closer to 0 are optimal. Table 3 further illustrates this by showing that annealing $\\\\alpha$ from 2 to 0 provides moderately improved performance over FGR ($\\\\alpha = -2$) for high-noise inputs and behaves equivalently in low-noise inputs. Furthermore, treating $\\\\alpha$ as a tunable hyperparameter (gFGR*) yielded a significant error reduction compared to fixed $\\\\alpha$ settings for both high and low-noise levels.'}}",
+      "answer": "The performance of gFGR generally improves as the shape parameter \u03b1 increases.",
+      "Semantic": 0.7456132769584656,
+      "Time": 2.3019261360168457
+    },
+    "10": {
+      "question": "Which image representation results in the sharpest and highest-quality samples?",
+      "response": "{{'Answer': 'The image representation \"Wavelets + YUV\" best maximizes validation set ELBO and produces sharper and more detailed samples when combined with the VAE trained using the general distribution (labeled as \"Ours\" in Image 1, which shows the mean reconstructions). The caption for Image 1 states: \"Because our distribution can adaptively interpolate between Cauchy-like or normal-like behavior for each coefficient individually, using it results in sharper and higher-quality samples (particularly when using DCT or wavelet representations)...\"'}}",
+      "answer": "DCT and wavelet representations.",
+      "Semantic": 0.5216761231422424,
+      "Time": 1.9401664733886719
+    },
+    "11": {
+      "question": "Which dataset shows the greatest sensitivity to the choice of $\\power$?",
+      "response": "{{'Answer': 'The RCV1 dataset shows the greatest relative improvement (25.2%) when using the best-performing $\\alpha$ value ($\\text{gRCC}^{*}$) compared to the fixed $\\alpha = -2$ ($\\text{RCC}$) in the clustering task (Image 2, Table 4).'}}",
+      "answer": "RCV1",
+      "Semantic": 0.5663571357727051,
+      "Time": 2.4653162956237793
+    }
+  }
+}

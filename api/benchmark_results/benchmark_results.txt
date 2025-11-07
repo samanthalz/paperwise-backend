@@ -1,0 +1,241 @@
+gemini 2.5 flash preview
+
+Running benchmark on 8 papers with 50 questions total.
+
+=== Paper 1611.04684v1 (5 questions) ===
+Paper 1611.04684v1 Q0: SEM=0.85 Time=5.04s
+Paper 1611.04684v1 Q1: SEM=0.81 Time=5.28s
+Paper 1611.04684v1 Q2: SEM=0.52 Time=3.79s
+Paper 1611.04684v1 Q3: SEM=0.73 Time=6.19s
+Paper 1611.04684v1 Q4: SEM=0.78 Time=7.56s
+
+=== Paper 1611.05742v3 (3 questions) ===
+Paper 1611.05742v3 Q0: SEM=0.77 Time=6.12s
+Paper 1611.05742v3 Q1: SEM=0.72 Time=5.21s
+Paper 1611.05742v3 Q2: SEM=0.92 Time=10.36s
+
+=== Paper 1611.07718v2 (8 questions) ===
+Paper 1611.07718v2 Q0: SEM=0.68 Time=6.69s
+Paper 1611.07718v2 Q1: SEM=0.67 Time=8.48s
+Paper 1611.07718v2 Q2: SEM=0.78 Time=9.84s
+Paper 1611.07718v2 Q3: SEM=0.84 Time=6.15s
+Paper 1611.07718v2 Q4: SEM=0.42 Time=5.43s
+Paper 1611.07718v2 Q5: SEM=0.41 Time=5.75s
+Paper 1611.07718v2 Q6: SEM=0.40 Time=7.17s
+Paper 1611.07718v2 Q7: SEM=0.75 Time=6.75s
+
+=== Paper 1611.03780v2 (8 questions) ===
+Paper 1611.03780v2 Q0: SEM=0.69 Time=8.28s
+Paper 1611.03780v2 Q1: SEM=0.80 Time=5.41s
+Paper 1611.03780v2 Q2: SEM=0.80 Time=9.03s
+Paper 1611.03780v2 Q3: SEM=0.77 Time=7.17s
+Paper 1611.03780v2 Q4: SEM=0.59 Time=3.52s
+Paper 1611.03780v2 Q5: SEM=0.40 Time=4.44s
+Paper 1611.03780v2 Q6: SEM=0.77 Time=5.46s
+Paper 1611.03780v2 Q7: SEM=0.70 Time=9.69s
+
+=== Paper 1611.04363v2 (2 questions) ===
+Paper 1611.04363v2 Q0: SEM=0.84 Time=9.03s
+Paper 1611.04363v2 Q1: SEM=0.68 Time=5.37s
+
+=== Paper 1608.02784v2 (7 questions) ===
+Paper 1608.02784v2 Q0: SEM=0.90 Time=6.44s
+Paper 1608.02784v2 Q1: SEM=0.70 Time=7.95s
+Paper 1608.02784v2 Q2: SEM=0.63 Time=12.94s
+Paper 1608.02784v2 Q3: SEM=0.75 Time=6.21s
+Paper 1608.02784v2 Q4: SEM=0.62 Time=6.62s
+Paper 1608.02784v2 Q5: SEM=0.71 Time=7.01s
+Paper 1608.02784v2 Q6: SEM=0.66 Time=5.96s
+
+=== Paper 1611.02654v2 (5 questions) ===
+Paper 1611.02654v2 Q0: SEM=0.33 Time=4.41s
+Paper 1611.02654v2 Q1: SEM=0.85 Time=6.64s
+Paper 1611.02654v2 Q2: SEM=0.84 Time=6.35s
+Paper 1611.02654v2 Q3: SEM=0.51 Time=5.93s
+Paper 1611.02654v2 Q4: SEM=0.82 Time=4.78s
+
+=== Paper 1701.03077v10 (12 questions) ===
+Paper 1701.03077v10 Q0: SEM=0.79 Time=7.52s
+Paper 1701.03077v10 Q1: SEM=0.84 Time=7.02s
+Paper 1701.03077v10 Q2: SEM=0.70 Time=8.01s
+Paper 1701.03077v10 Q3: SEM=0.72 Time=6.82s
+Paper 1701.03077v10 Q4: SEM=0.80 Time=9.91s
+Paper 1701.03077v10 Q5: SEM=0.81 Time=7.02s
+Paper 1701.03077v10 Q6: SEM=0.59 Time=14.22s
+Paper 1701.03077v10 Q7: SEM=0.89 Time=6.21s
+Paper 1701.03077v10 Q8: SEM=0.75 Time=7.93s
+Paper 1701.03077v10 Q9: SEM=0.80 Time=8.54s
+Paper 1701.03077v10 Q10: SEM=0.48 Time=8.71s
+Paper 1701.03077v10 Q11: SEM=0.28 Time=11.61s
+
+--- Benchmark Results ---
+Total Semantic Similarity: 34.83
+Total Number of Questions: 50
+Average Semantic Similarity: 0.70
+Average LLM Response Time: 7.16s per question
+
+
+--------------
+gemini 2.5 flash lite preview
+
+Running benchmark on 8 papers with 50 questions total.
+
+=== Paper 1611.04684v1 (5 questions) ===
+Paper 1611.04684v1 Q0: SEM=0.85 Time=2.49s
+Paper 1611.04684v1 Q1: SEM=0.84 Time=1.55s
+Paper 1611.04684v1 Q2: SEM=0.57 Time=1.66s
+Paper 1611.04684v1 Q3: SEM=0.71 Time=1.65s
+Paper 1611.04684v1 Q4: SEM=0.60 Time=1.71s
+
+=== Paper 1611.05742v3 (3 questions) ===
+Paper 1611.05742v3 Q0: SEM=0.78 Time=2.36s
+Paper 1611.05742v3 Q1: SEM=0.60 Time=2.01s
+Paper 1611.05742v3 Q2: SEM=0.87 Time=1.84s
+
+=== Paper 1611.07718v2 (8 questions) ===
+Paper 1611.07718v2 Q0: SEM=0.64 Time=1.81s
+Paper 1611.07718v2 Q1: SEM=0.71 Time=2.17s
+Paper 1611.07718v2 Q2: SEM=0.71 Time=1.73s
+Paper 1611.07718v2 Q3: SEM=0.75 Time=1.44s
+Paper 1611.07718v2 Q4: SEM=0.29 Time=3.96s
+Paper 1611.07718v2 Q5: SEM=0.61 Time=2.52s
+Paper 1611.07718v2 Q6: SEM=0.31 Time=2.53s
+Paper 1611.07718v2 Q7: SEM=0.68 Time=2.46s
+
+=== Paper 1611.03780v2 (8 questions) ===
+Quota exceeded. Retrying in 35 seconds...
+Paper 1611.03780v2 Q0: SEM=0.64 Time=36.89s
+Paper 1611.03780v2 Q1: SEM=0.77 Time=1.90s
+Paper 1611.03780v2 Q2: SEM=0.57 Time=2.05s
+Paper 1611.03780v2 Q3: SEM=0.82 Time=2.56s
+Paper 1611.03780v2 Q4: SEM=0.46 Time=2.06s
+Paper 1611.03780v2 Q5: SEM=0.44 Time=1.71s
+Paper 1611.03780v2 Q6: SEM=0.62 Time=2.27s
+Paper 1611.03780v2 Q7: SEM=0.56 Time=3.64s
+
+=== Paper 1611.04363v2 (2 questions) ===
+Paper 1611.04363v2 Q0: SEM=0.65 Time=3.68s
+Paper 1611.04363v2 Q1: SEM=0.63 Time=2.22s
+
+=== Paper 1608.02784v2 (7 questions) ===
+Paper 1608.02784v2 Q0: SEM=0.84 Time=2.44s
+Paper 1608.02784v2 Q1: SEM=0.69 Time=2.75s
+Paper 1608.02784v2 Q2: SEM=0.69 Time=6.27s
+Paper 1608.02784v2 Q3: SEM=0.76 Time=2.38s
+Paper 1608.02784v2 Q4: SEM=0.60 Time=2.53s
+Paper 1608.02784v2 Q5: SEM=0.62 Time=2.06s
+Paper 1608.02784v2 Q6: SEM=0.72 Time=1.96s
+
+=== Paper 1611.02654v2 (5 questions) ===
+Paper 1611.02654v2 Q0: SEM=0.58 Time=1.58s
+Paper 1611.02654v2 Q1: SEM=0.78 Time=2.41s
+Paper 1611.02654v2 Q2: SEM=0.90 Time=1.64s
+Paper 1611.02654v2 Q3: SEM=0.45 Time=1.64s
+Paper 1611.02654v2 Q4: SEM=0.75 Time=1.79s
+
+=== Paper 1701.03077v10 (12 questions) ===
+Paper 1701.03077v10 Q0: SEM=0.77 Time=1.94s
+Paper 1701.03077v10 Q1: SEM=0.81 Time=2.20s
+Paper 1701.03077v10 Q2: SEM=0.52 Time=2.20s
+Paper 1701.03077v10 Q3: SEM=0.76 Time=3.57s
+Quota exceeded. Retrying in 35 seconds...
+Paper 1701.03077v10 Q4: SEM=0.77 Time=38.14s
+Paper 1701.03077v10 Q5: SEM=0.77 Time=3.47s
+Paper 1701.03077v10 Q6: SEM=0.62 Time=3.21s
+Paper 1701.03077v10 Q7: SEM=0.92 Time=2.05s
+Paper 1701.03077v10 Q8: SEM=0.74 Time=1.77s
+Paper 1701.03077v10 Q9: SEM=0.75 Time=2.30s
+Paper 1701.03077v10 Q10: SEM=0.52 Time=1.94s
+Paper 1701.03077v10 Q11: SEM=0.57 Time=2.47s
+
+--- Benchmark Results ---
+Total Semantic Similarity: 33.58
+Total Number of Questions: 50
+Average Semantic Similarity: 0.67
+Average LLM Response Time: 3.75s per question
+
+
+-----------
+gemini 2.5 pro
+Running benchmark on 8 papers with 50 questions total.
+
+=== Paper 1611.04684v1 (5 questions) ===
+Paper 1611.04684v1 Q0: SEM=0.84 Time=14.31s
+Paper 1611.04684v1 Q1: SEM=0.82 Time=11.42s
+Paper 1611.04684v1 Q2: SEM=0.58 Time=8.86s
+Quota exceeded. Retrying in 35 seconds...
+Paper 1611.04684v1 Q3: SEM=0.73 Time=63.62s
+Paper 1611.04684v1 Q4: SEM=0.68 Time=12.22s
+
+=== Paper 1611.05742v3 (3 questions) ===
+Quota exceeded. Retrying in 35 seconds...
+Paper 1611.05742v3 Q0: SEM=0.78 Time=58.95s
+Paper 1611.05742v3 Q1: SEM=0.59 Time=12.64s
+Paper 1611.05742v3 Q2: SEM=0.85 Time=16.55s
+
+=== Paper 1611.07718v2 (8 questions) ===
+Paper 1611.07718v2 Q0: SEM=0.55 Time=16.16s
+Paper 1611.07718v2 Q1: SEM=0.71 Time=19.71s
+Quota exceeded. Retrying in 35 seconds...
+Paper 1611.07718v2 Q2: SEM=0.82 Time=53.07s
+Paper 1611.07718v2 Q3: SEM=0.88 Time=10.71s
+Paper 1611.07718v2 Q4: SEM=0.49 Time=7.45s
+Paper 1611.07718v2 Q5: SEM=0.57 Time=13.20s
+Paper 1611.07718v2 Q6: SEM=0.32 Time=16.12s
+Quota exceeded. Retrying in 35 seconds...
+Paper 1611.07718v2 Q7: SEM=0.78 Time=48.73s
+
+=== Paper 1611.03780v2 (8 questions) ===
+Paper 1611.03780v2 Q0: SEM=0.70 Time=22.24s
+Paper 1611.03780v2 Q1: SEM=0.85 Time=12.32s
+Paper 1611.03780v2 Q2: SEM=0.71 Time=18.79s
+Paper 1611.03780v2 Q3: SEM=0.77 Time=19.58s
+Quota exceeded. Retrying in 35 seconds...
+Paper 1611.03780v2 Q4: SEM=0.59 Time=55.57s
+Paper 1611.03780v2 Q5: SEM=0.43 Time=18.21s
+Paper 1611.03780v2 Q6: SEM=0.78 Time=17.32s
+Paper 1611.03780v2 Q7: SEM=0.66 Time=20.66s
+
+=== Paper 1611.04363v2 (2 questions) ===
+Paper 1611.04363v2 Q0: SEM=0.76 Time=13.67s
+Paper 1611.04363v2 Q1: SEM=0.59 Time=10.67s
+
+=== Paper 1608.02784v2 (7 questions) ===
+Paper 1608.02784v2 Q0: SEM=0.80 Time=17.43s
+Paper 1608.02784v2 Q1: SEM=0.75 Time=19.34s
+Quota exceeded. Retrying in 35 seconds...
+Paper 1608.02784v2 Q2: SEM=0.71 Time=51.43s
+Paper 1608.02784v2 Q3: SEM=0.68 Time=13.83s
+Quota exceeded. Retrying in 35 seconds...
+Paper 1608.02784v2 Q4: SEM=0.52 Time=52.01s
+Paper 1608.02784v2 Q5: SEM=0.65 Time=14.72s
+Paper 1608.02784v2 Q6: SEM=0.72 Time=16.30s
+
+=== Paper 1611.02654v2 (5 questions) ===
+Paper 1611.02654v2 Q0: SEM=0.61 Time=17.45s
+Paper 1611.02654v2 Q1: SEM=0.86 Time=15.38s
+Paper 1611.02654v2 Q2: SEM=0.82 Time=14.03s
+Quota exceeded. Retrying in 35 seconds...
+Paper 1611.02654v2 Q3: SEM=0.51 Time=48.50s
+Paper 1611.02654v2 Q4: SEM=0.76 Time=34.32s
+
+=== Paper 1701.03077v10 (12 questions) ===
+Paper 1701.03077v10 Q0: SEM=0.76 Time=15.28s
+Paper 1701.03077v10 Q1: SEM=0.80 Time=61.64s
+Quota exceeded. Retrying in 35 seconds...
+Paper 1701.03077v10 Q2: SEM=0.81 Time=16.57s
+Paper 1701.03077v10 Q3: SEM=0.63 Time=12.09s
+Paper 1701.03077v10 Q4: SEM=0.63 Time=23.14s
+Paper 1701.03077v10 Q5: SEM=0.61 Time=24.07s
+Paper 1701.03077v10 Q6: SEM=0.65 Time=22.05s
+Paper 1701.03077v10 Q7: SEM=0.66 Time=25.06s
+Paper 1701.03077v10 Q8: SEM=0.64 Time=21.08s
+Paper 1701.03077v10 Q9: SEM=0.62 Time=24.06s
+Paper 1701.03077v10 Q10: SEM=0.67 Time=23.05s
+Paper 1701.03077v10 Q11: SEM=0.58 Time=30.42s
+
+--- Benchmark Results ---
+Total Semantic Similarity: 34.50
+Total Number of Questions: 50
+Average Semantic Similarity: 0.69
+Average LLM Response Time: 24.12s per question

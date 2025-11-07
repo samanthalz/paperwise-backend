@@ -1,8 +1,4 @@
-from docling.document_converter import DocumentConverter, PdfFormatOption
-from docling.datamodel.base_models import InputFormat
-from docling.datamodel.pipeline_options import PdfPipelineOptions, RapidOcrOptions, AcceleratorDevice, AcceleratorOptions
 import re
-from collections import OrderedDict
 import requests
 from pathlib import Path
 import fitz  # PyMuPDF
@@ -42,7 +38,20 @@ def download_pdf(url: str, tmp_dir="tmp_pdfs"):
 
     return file_path, file_hash
 
-#Replace each base64 image with its corresponding summary
+# Replace each base64 image with its corresponding summary
+# def replace_base64_images(md_text, summary_dict):
+#     pattern = r'!\[.*?\]\(data:image\/png;base64,[A-Za-z0-9+/=\n]+\)'
+
+#     def replacement():
+#         # Get next unused key from the summaries dict
+#         if summary_dict:
+#             key, value = summary_dict.popitem(last=False)  # pop the first item
+#             return f"\n\n{value}\n\n"
+#         else:
+#             return "\n\n[Image removed - no summary available]\n\n"
+
+#     return re.sub(pattern, replacement, md_text)
+
 def replace_base64_images(md_text, summary_dict):
     pattern = r'!\[.*?\]\(data:image\/png;base64,[A-Za-z0-9+/=\n]+\)'
 

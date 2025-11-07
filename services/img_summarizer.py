@@ -1,15 +1,8 @@
 import logging
-import time
 import io
 from collections import OrderedDict
-from PIL import Image
-from pathlib import Path
-
-from docling_core.types.doc import PictureItem, TableItem
-from docling.datamodel.base_models import InputFormat
-from docling.datamodel.pipeline_options import PdfPipelineOptions, RapidOcrOptions, AcceleratorOptions, AcceleratorDevice
-from docling.document_converter import DocumentConverter, PdfFormatOption
-from docling_core.types.doc import ImageRefMode
+from PIL import Image 
+from docling_core.types.doc import TableItem
 
 import google.generativeai as genai
 
@@ -39,11 +32,11 @@ def get_prompt_for_element(element):
 
 def summarize_with_gemini_pil(image_elements, conv_res, api_key: str, doc_filename: str) -> OrderedDict:
     """
-    Summarize images using Gemini 2.5 Flash Lite with PIL images directly from Docling.
+    Summarize images using Gemini with PIL images directly from Docling.
     Returns OrderedDict of {image_filename: summary_text}.
     """
     genai.configure(api_key=api_key)    
-    model = genai.GenerativeModel("gemini-2.5-flash-lite")
+    model = genai.GenerativeModel("gemini-2.5-flash-lite-preview-09-2025")
     summaries = OrderedDict()
 
     table_counter = 0

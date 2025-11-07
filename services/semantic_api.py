@@ -103,7 +103,6 @@ async def fetch_references(client: httpx.AsyncClient, paper_id: str) -> List[Dic
 
 # Fetch API-based recommendations
 async def fetch_recommendations(client: httpx.AsyncClient, paper_id: str) -> List[Dict[str, Any]]:
-    #url = f"{RECOMMENDATION_API_URL}/{paper_id}?fields=title,url,venue,abstract,openAccessPdf,authors"
     url = f"{RECOMMENDATION_API_URL}/{paper_id}?fields={FIELDS}"
     data = await safe_get(client, url)
     if not data or "recommendedPapers" not in data:

@@ -26,7 +26,7 @@ router = APIRouter()
 # --- Background pipeline ---
 def run_full_pipeline(pdf_url, pdf_id, extract_summary: bool = True):
     try:
-        # Step 1: Download PDF
+        # Download PDF
         supabase.table("papers").update({"checkpoint": "Downloading PDF"}).eq("pdf_id", pdf_id).execute()
         pdf_path, file_hash = download_pdf(pdf_url)
         
@@ -38,7 +38,7 @@ def run_full_pipeline(pdf_url, pdf_id, extract_summary: bool = True):
             supabase.table("papers").update({
                 "checkpoint": f"Duplicate found: {existing_pdf_id}"
             }).eq("pdf_id", pdf_id).execute()
-            print(f"⚠️ Duplicate detected for pdf_id={pdf_id}. Already exists as {existing_pdf_id}")
+            print(f"Duplicate detected for pdf_id={pdf_id}. Already exists as {existing_pdf_id}")
             return {"status": "duplicate"}
         else:
             supabase.table("papers").update({
@@ -50,7 +50,7 @@ def run_full_pipeline(pdf_url, pdf_id, extract_summary: bool = True):
             "file_hash": file_hash,
         }).eq("pdf_id", pdf_id).execute()
         
-        # Step 2: Generate thumbnail
+        # Generate thumbnail
         supabase.table("papers").update({"checkpoint": "Generating thumbnail"}).eq("pdf_id", pdf_id).execute()
         thumbnail_path = generate_pdf_thumbnail(pdf_path)
 
@@ -61,7 +61,7 @@ def run_full_pipeline(pdf_url, pdf_id, extract_summary: bool = True):
         try:
             supabase.storage.from_("thumbnails").remove([storage_path])
         except Exception as e:
-            print(f"⚠️ Warning: Failed to remove old thumbnail (may not exist): {e}")
+            print(f": Failed to remove old thumbnail (may not exist): {e}")
 
         try:
             supabase.storage.from_("thumbnails").upload(
@@ -70,12 +70,12 @@ def run_full_pipeline(pdf_url, pdf_id, extract_summary: bool = True):
                 {"content-type": "image/png"},
             )
         except Exception as e:
-            print(f"⚠️ Upload warning: {e}")
+            print(f"Upload warning: {e}")
 
         thumbnail_url = supabase.storage.from_("thumbnails").get_public_url(storage_path)
         supabase.table("papers").update({"thumbnail_url": thumbnail_url}).eq("pdf_id", pdf_id).execute()
 
-        # Step 3: Convert PDF to Markdown
+        # Convert PDF to Markdown
         supabase.table("papers").update({"checkpoint": "Extracting text from PDF"}).eq("pdf_id", pdf_id).execute()
         markdown_text, image_elements, conv_res = parse_pdf(pdf_path)
         summaries = summarize_with_gemini_pil(
@@ -90,14 +90,14 @@ def run_full_pipeline(pdf_url, pdf_id, extract_summary: bool = True):
             supabase.table("papers").update({"checkpoint": "Error: No text extracted"}).eq("pdf_id", pdf_id).execute()
             return
 
-        # Step 4: Save embeddings and chunks
+        # Save embeddings and chunks
         supabase.table("papers").update({"checkpoint": "Saving embeddings and chunks"}).eq("pdf_id", pdf_id).execute()
         md_path = f"{Path(pdf_path).stem}.md"
         with open(md_path, "w", encoding="utf-8") as f:
             f.write(markdown_text)
         process_markdown(md_path, pdf_id=pdf_id)
 
-        # Step 5: Extract summary/authors ONLY if flag is True
+        # Extract summary/authors ONLY if flag is True
         if extract_summary:
             supabase.table("papers").update({"checkpoint": "Extracting summary/authors"}).eq("pdf_id", pdf_id).execute()
             try:
@@ -111,9 +111,9 @@ def run_full_pipeline(pdf_url, pdf_id, extract_summary: bool = True):
                     "abstract": summary
                 }).eq("pdf_id", pdf_id).execute()
             except Exception as e:
-                print(f"⚠️ Failed to extract summary/authors: {e}")
+                print(f"Failed to extract summary/authors: {e}")
 
-        # Step 6: Extract keypoints
+        # Extract keypoints
         supabase.table("papers").update({"checkpoint": "Extracting keypoints"}).eq("pdf_id", pdf_id).execute()
         keypoints = rag.extract_keypoints(pdf_id=pdf_id)
         supabase.table("papers").update({
@@ -144,7 +144,7 @@ async def process_pdf_endpoint(data: PDFRequest, background_tasks: BackgroundTas
         data.arxiv_id, data.title, data.summary, data.authors, data.published
     )
 
-    # --- Step 0: Check if paper exists ---
+    # --- Check if paper exists ---
     resp = supabase.table("papers").select("*").eq("arxiv_id", arxiv_id).execute()
     if resp.data:
         paper = resp.data[0]
@@ -188,7 +188,7 @@ class PDFIdRequest(BaseModel):
 async def process_existing_pdf_endpoint(data: PDFIdRequest, background_tasks: BackgroundTasks):
     pdf_id = data.pdf_id
 
-    # --- Step 0: Check if PDF exists and has supabase_url ---
+    # --- Check if PDF exists and has supabase_url ---
     resp = supabase.table("papers").select("*").eq("pdf_id", pdf_id).execute()
     if not resp.data:
         raise HTTPException(status_code=404, detail=f"PDF with id {pdf_id} not found")
@@ -198,7 +198,7 @@ async def process_existing_pdf_endpoint(data: PDFIdRequest, background_tasks: Ba
     if not pdf_url:
         raise HTTPException(status_code=400, detail=f"PDF with id {pdf_id} does not have a valid supabase_url")
 
-    # --- Step 1: Check if already processed ---
+    # --- Check if already processed ---
     if paper.get("processed", False):
         return {
             "status": "skipped",
@@ -207,14 +207,8 @@ async def process_existing_pdf_endpoint(data: PDFIdRequest, background_tasks: Ba
             "message": "PDF has already been processed"
         }
 
-    # --- Step 2: Schedule background processing ---
+    # --- Schedule background processing ---
     background_tasks.add_task(run_full_pipeline, pdf_url, pdf_id, extract_summary=True)
-
-    # return {
-    #     "status": "processing",
-    #     "pdf_id": pdf_id,
-    #     "checkpoint": "Background processing started"
-    # }
 
 class RenameRequest(BaseModel):
     pdf_id: str

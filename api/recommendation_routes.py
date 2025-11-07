@@ -25,24 +25,13 @@ async def get_recommendations(request: dict):
         # --- Fetch citations and references ---
         citations_raw = await fetch_citations(client, paper_id)
         references_raw = await fetch_references(client, paper_id)
-        # print(f"Fetched: {len(citations_raw)} citations, {len(references_raw)} references")
-        # print("Sample before cleaning:")
-        # for p in citations_raw[:3]:
-        #     print(p.get("title"), p.get("externalIds"))
 
-        
         citations = clean_papers(citations_raw)
         references = clean_papers(references_raw)
-        # print(f"After clean: {len(citations)} citations, {len(references)} references")
-        # print("Sample after cleaning:")
-        # for p in citations[:3]:
-        #     print(p.get("title"), p.get("externalIds"))
-
 
         # --- Fetch API recommendations ---
         recommendations_raw = await fetch_recommendations(client, paper_id)
         recommendations = clean_papers(recommendations_raw)
-        # print(f"After clean: {len(recommendations)} recommendations")
 
         # --- Combine papers for ranking ---
         if recommendations:
@@ -53,14 +42,12 @@ async def get_recommendations(request: dict):
             source = "specter2-base"
 
         combined_papers = [p for p in combined_papers if p.get("abstract")]
-        # print(f"Total papers to rank: {len(combined_papers)}")
 
         if not combined_papers:
             raise HTTPException(status_code=404, detail="No papers with abstracts found for ranking.")
 
         # --- Rank using SPECTER2 embeddings ---
         ranked = await rank_by_similarity(title, abstract, combined_papers)
-        # print(f"Ranked {len(ranked)} papers, showing top {min(10, len(ranked))}")
 
         return {
             "source": source,

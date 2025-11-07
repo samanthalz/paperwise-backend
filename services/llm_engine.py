@@ -4,7 +4,7 @@ import google.generativeai as genai
 import re
 
 class RAG:
-    def __init__(self, retriever, llm_name="gemini-2.5-flash-preview-09-2025", api_key=None):
+    def __init__(self, retriever, llm_name="gemini-2.5-flash-lite-preview-09-2025", api_key=None):
         if not api_key:
             raise ValueError("Gemini API key required")
         genai.configure(api_key=api_key)
@@ -83,18 +83,13 @@ Answer:"""
         Generate context string from top relevant chunks for RAG.
         Includes Markdown headings if available.
         """
-        # 1️⃣ Retrieve top_k chunks from Supabase
+        # Retrieve top_k chunks from Supabase
         raw = self.retriever.search(query, pdf_id=pdf_id, top_k=top_k) or []
 
-        # print(f"Retriever returned: {len(raw)} candidates")
-        # for i, entry in enumerate(raw[:6]):
-        #     preview = (entry.get("chunk_text", "")[:200]).replace("\n", " ")
-        #     print(f"[raw {i}] sim={entry.get('similarity', 0.0):.4f} preview={preview}...")
-
-        # 2️⃣ Rerank & select top_final
+        # Rerank & select top_final
         top_final = self.rerank_and_select(raw, query, final_k=final_k)
 
-        # 3️⃣ Build combined context with heading metadata
+        # Build combined context with heading metadata
         combined = []
         for idx, e in enumerate(top_final):
             text = e.get("chunk_text", "")
@@ -105,11 +100,6 @@ Answer:"""
 
             meta_str = f"[{' | '.join(metadata_parts)}]" if metadata_parts else ""
             combined.append(f"[Chunk {idx+1}]{meta_str}\n{text}")
-
-        # print(f"Final context chunks used: {len(combined)}")
-        # for i, c in enumerate(combined):
-        #     preview = c[:200].replace("\n", " ")
-        #     print(f"[used {i}] len={len(c)} preview={preview}...")
             
         metadata = self.retriever.get_metadata(pdf_id)
         title = metadata.get("title")
@@ -120,8 +110,6 @@ Answer:"""
 
     def stream_query(self, query, pdf_id=None, top_k=20):
         context = self.generate_context(query, pdf_id=pdf_id, top_k=top_k)
-
-        # just pass context or empty string
         context_for_prompt = context if context.strip() else ""
 
         prompt = self.qa_prompt_tmpl_str.format(
@@ -146,9 +134,9 @@ Answer:"""
                                 if text:
                                     yield text
                 else:
-                    yield "⚠️ Gemini returned no content."
+                    yield "Gemini returned no content."
         except Exception as e:
-            yield f"⚠️ Gemini streaming error: {str(e)}"
+            yield f"Gemini streaming error: {str(e)}"
 
     def extract_keypoints(self, pdf_id: str):
         if not pdf_id:
@@ -163,12 +151,12 @@ Answer:"""
             "Limitations"
         ]
 
-        # 1️⃣ Fetch all chunks
+        # Fetch all chunks
         all_chunks = self.retriever.get_all_chunks(pdf_id=pdf_id) or []
         if not all_chunks:
-            print(f"⚠️ No chunks found for pdf_id={pdf_id}")
+            print(f"No chunks found for pdf_id={pdf_id}")
         
-        # 2️⃣ Combine chunks into a single text context
+        # Combine chunks into a single text context
         full_text = ""
         for idx, chunk in enumerate(all_chunks):
             heading = chunk.get("heading") or ""
@@ -176,10 +164,10 @@ Answer:"""
             meta_str = f"[Heading: {heading}]" if heading else ""
             full_text += f"[Chunk {idx+1}]{meta_str}\n{text}\n\n---\n\n"
 
-        # 3️⃣ Initialize model
+        # Initialize model
         model = genai.GenerativeModel(self.llm_name)
 
-        # 4️⃣ Extract keypoints section by section
+        # Extract keypoints section by section
         keypoints = {}
         for section in sections:
             prompt = f"""
@@ -203,8 +191,8 @@ Instruction: Based on the entire paper, extract a concise {section}.
                 )
                 keypoints[section] = getattr(response, "text", "").strip() or "Not mentioned"
             except Exception as e:
-                print(f"❌ Failed to extract {section}: {e}")
-                keypoints[section] = "⚠️ Failed"
+                print(f"Failed to extract {section}: {e}")
+                keypoints[section] = " Failed"
 
         return keypoints
     
@@ -220,10 +208,10 @@ Instruction: Based on the entire paper, extract a concise {section}.
         model = genai.GenerativeModel(self.llm_name)
         extracted = {"title": None, "authors": [], "summary": None, "summary_source": None}
 
-        # 1️⃣ Gather all chunks for full-text summary
+        # Gather all chunks for full-text summary
         all_chunks = self.retriever.get_all_chunks(pdf_id=pdf_id) or []
         if not all_chunks:
-            print(f"⚠️ No chunks found for pdf_id={pdf_id}")
+            print(f" No chunks found for pdf_id={pdf_id}")
 
         full_text = ""
         for idx, chunk in enumerate(all_chunks):
@@ -232,7 +220,7 @@ Instruction: Based on the entire paper, extract a concise {section}.
             meta_str = f"[Heading: {heading}]" if heading else ""
             full_text += f"[Chunk {idx+1}]{meta_str}\n{text}\n\n---\n\n"
 
-        # 2️⃣ Try reading first page directly from PDF (for title/authors)
+        # Try reading first page directly from PDF (for title/authors)
         first_page_text = ""
         if pdf_path:
             try:
@@ -241,12 +229,12 @@ Instruction: Based on the entire paper, extract a concise {section}.
                     first_page_text = doc.load_page(0).get_text("text")
                 doc.close()
             except Exception as e:
-                print(f"⚠️ Failed to read PDF: {e}")
+                print(f" Failed to read PDF: {e}")
         else:
             first_page_chunk = next((c for c in all_chunks if c.get("page_number") == 1), all_chunks[0] if all_chunks else {})
             first_page_text = first_page_chunk.get("chunk_text", "")
 
-        # 3️⃣ Extract TITLE
+        # Extract TITLE
         try:
             title_prompt = f"""
     Context (first page of paper):
@@ -265,7 +253,7 @@ Instruction: Based on the entire paper, extract a concise {section}.
         except Exception as e:
             print(f"❌ Failed to extract title: {e}")
 
-        # 4️⃣ Extract AUTHORS
+        # Extract AUTHORS
         try:
             authors_prompt = f"""
     Context (first page of paper):
@@ -283,9 +271,9 @@ Instruction: Based on the entire paper, extract a concise {section}.
             if authors_str and authors_str.lower() != "not mentioned":
                 extracted["authors"] = [a.strip() for a in authors_str.split(",") if a.strip()]
         except Exception as e:
-            print(f"❌ Failed to extract authors: {e}")
+            print(f" Failed to extract authors: {e}")
 
-        # 5️⃣ Extract ABSTRACT or generate SUMMARY
+        #  Extract ABSTRACT or generate SUMMARY
         try:
             abstract_text = ""
             abstract_patterns = [
@@ -330,8 +318,8 @@ Instruction: Based on the entire paper, extract a concise {section}.
                 extracted["summary_source"] = "generated"
 
         except Exception as e:
-            print(f"❌ Failed to extract summary: {e}")
-            extracted["summary"] = "⚠️ Failed"
+            print(f"Failed to extract summary: {e}")
+            extracted["summary"] = " Failed"
             extracted["summary_source"] = "error"
 
         return extracted
