@@ -31,7 +31,7 @@ app.include_router(recommendation_routes.router)
 def root():
     return {"message": "FastAPI PDF RAG Pipeline is running successfully!"}
 
-# --- Run (Render + Local) ---
+# --- Run ---
 if __name__ == "__main__":
     import uvicorn
 

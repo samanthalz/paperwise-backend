@@ -36,7 +36,7 @@ def summarize_with_gemini_pil(image_elements, conv_res, api_key: str, doc_filena
     Returns OrderedDict of {image_filename: summary_text}.
     """
     genai.configure(api_key=api_key)    
-    model = genai.GenerativeModel("gemini-2.5-flash-lite-preview-09-2025")
+    model = genai.GenerativeModel("gemini-2.5-flash-preview-09-2025")
     summaries = OrderedDict()
 
     table_counter = 0

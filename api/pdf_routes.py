@@ -3,7 +3,7 @@ import traceback, logging, os
 from fastapi import APIRouter, HTTPException, BackgroundTasks
 from models.pdf_models import PDFRequest
 from db.supabase_client import supabase
-from utils.pdf_utils import download_pdf, generate_pdf_thumbnail, replace_base64_images, rename_paper, move_paper, delete_paper, delete_folder
+from utils.pdf_utils import download_pdf, generate_pdf_thumbnail, rename_folder_in_db, replace_base64_images, rename_paper, move_paper, delete_paper, delete_folder
 from core.pdf_parser import parse_pdf
 from core.chunk_embed import process_markdown
 from services.llm_engine import RAG
@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 # --- Setup retriever + RAG ---
 embedding_model = SentenceTransformer("google/embeddinggemma-300m")
 retriever = Retriever(supabase)
-rag = RAG(retriever=retriever, llm_name="gemini-2.5-flash-lite", api_key=os.getenv("GEMINI_API_KEY"))
+rag = RAG(retriever=retriever, llm_name="gemini-2.5-flash-preview-09-2025", api_key=os.getenv("GEMINI_API_KEY"))
 
 router = APIRouter()
 
@@ -92,7 +92,7 @@ def run_full_pipeline(pdf_url, pdf_id, extract_summary: bool = True):
 
         # Save embeddings and chunks
         supabase.table("papers").update({"checkpoint": "Saving embeddings and chunks"}).eq("pdf_id", pdf_id).execute()
-        md_path = Path("tmp_markdown") / f"{Path(pdf_path).stem}.md"
+        md_path = Path("tmp_markdowns") / f"{Path(pdf_path).stem}.md"
         with open(md_path, "w", encoding="utf-8") as f:
             f.write(markdown_text)
         process_markdown(md_path, pdf_id=pdf_id)
@@ -224,6 +224,10 @@ class DeleteRequest(BaseModel):
 class DeleteFolderRequest(BaseModel):
     folder_id: str
     
+class RenameFolderRequest(BaseModel):
+    folder_id: str
+    new_title: str
+    
 @router.post("/rename_pdf/")
 async def rename_pdf(req: RenameRequest):
     success = rename_paper(req.pdf_id, req.new_title)
@@ -251,3 +255,10 @@ async def delete_folder_endpoint(req: DeleteFolderRequest):
     if not success:
         raise HTTPException(status_code=400, detail="Folder deletion failed")
     return {"success": True, "message": f"Deleted folder {req.folder_id}"}
+
+@router.post("/rename_folder/")
+async def rename_folder(req: RenameFolderRequest):
+    success = rename_folder_in_db(req.folder_id, req.new_title)
+    if not success:
+        raise HTTPException(status_code=500, detail="Rename failed.")
+    return {"success": True}

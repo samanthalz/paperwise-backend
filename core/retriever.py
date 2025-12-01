@@ -57,6 +57,6 @@ class Retriever:
             )
             return getattr(response, "data", {}) or {}
         except Exception as e:
-            print(f"⚠️ get_metadata failed for pdf_id={pdf_id}: {e}")
+            print(f"get_metadata failed for pdf_id={pdf_id}: {e}")
             return {}
 

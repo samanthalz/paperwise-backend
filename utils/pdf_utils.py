@@ -52,16 +52,6 @@ def replace_base64_images(md_text, summary_dict):
     return re.sub(pattern, replacement, md_text)
 
 def generate_pdf_thumbnail(pdf_path: Union[str, Path], output_dir: Union[str, Path] = "tmp_thumbnails") -> Path:
-    """
-    Generate a thumbnail (PNG) from the first page of a PDF.
-
-    Args:
-        pdf_path: Path to the PDF file
-        output_dir: Directory to save the thumbnail
-
-    Returns:
-        Path to the generated PNG thumbnail
-    """
     pdf_path = Path(pdf_path)
     output_dir = Path(output_dir)
     output_dir.mkdir(exist_ok=True, parents=True)
@@ -89,7 +79,7 @@ def rename_paper(pdf_id: str, new_title: str) -> bool:
         return False
 
 def move_paper(pdf_id: str, folder_id: str) -> bool:
-    """Move a paper to a different folder (update user_papers.folder_id)."""
+    """Move a paper to a different folder"""
     try:
         res = supabase.table("user_papers").update({"folder_id": folder_id}).eq("pdf_id", pdf_id).execute()
         if res.data:
@@ -136,11 +126,11 @@ def delete_paper(pdf_id: str) -> bool:
 def delete_folder(folder_id: str) -> bool:
     """Delete a folder and all papers inside if no user references remain."""
     try:
-        # 1️⃣ Get all papers in this folder
+        # Get all papers in this folder
         papers_resp = supabase.table("user_papers").select("pdf_id").eq("folder_id", folder_id).execute()
         papers = [p["pdf_id"] for p in papers_resp.data] if papers_resp.data else []
 
-        # 2️⃣ Delete all user_papers links for these papers
+        # Delete all user_papers links for these papers
         for pdf_id in papers:
             supabase.table("user_papers").delete().eq("pdf_id", pdf_id).execute()
 
@@ -153,7 +143,7 @@ def delete_folder(folder_id: str) -> bool:
             else:
                 print(f"Paper {pdf_id} still linked to other users, skipped paper deletion")
 
-        # 3️⃣ Delete the folder itself
+        # Delete the folder itself
         supabase.table("folders").delete().eq("id", folder_id).execute()
         print(f"Folder {folder_id} deleted successfully")
 
@@ -162,3 +152,12 @@ def delete_folder(folder_id: str) -> bool:
         print("Delete folder failed:", e)
         return False
 
+def rename_folder_in_db(folder_id: str, new_title: str) -> bool:
+    """Rename a paper's title in Supabase."""
+    try:
+        res = supabase.table("folders").update({"name": new_title}).eq("id", folder_id).execute()
+        print("Rename result:", res.data)
+        return True
+    except Exception as e:
+        print("Rename failed:", e)
+        return False

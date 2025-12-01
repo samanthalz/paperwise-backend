@@ -9,3 +9,4 @@ responses
 __pycache__/
 .pytest_cache
 *.py[cod]
+test_pdf

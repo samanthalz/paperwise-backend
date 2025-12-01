@@ -8,9 +8,9 @@ from core.retriever import Retriever
 
 logger = logging.getLogger(__name__)
 
-# --- Setup retriever + RAG ---
+# Setup retriever + RAG 
 retriever = Retriever(supabase)
-rag = RAG(retriever=retriever, llm_name="gemini-2.5-flash-lite-preview-09-2025", api_key=os.getenv("GEMINI_API_KEY"))
+rag = RAG(retriever=retriever, llm_name="gemini-2.5-flash-preview-09-2025", api_key=os.getenv("GEMINI_API_KEY"))
 
 router = APIRouter()
 

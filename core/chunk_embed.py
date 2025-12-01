@@ -3,12 +3,10 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from langchain.text_splitter import MarkdownHeaderTextSplitter
 
-# import the supabase client
 from db.supabase_client import supabase  
 
-# ----------------------------
+
 # Read Markdown
-# ----------------------------
 def read_markdown(md_path: str) -> str:
     md_path = Path(md_path)
     if not md_path.exists():
@@ -16,9 +14,8 @@ def read_markdown(md_path: str) -> str:
     with open(md_path, "r", encoding="utf-8") as f:
         return f.read()
 
-# ----------------------------
+
 # Chunk text
-# ----------------------------
 def chunk_text(text: str):
     """
     Split Markdown into chunks based on headings, keeping heading metadata.
@@ -55,9 +52,8 @@ def chunk_text(text: str):
 
     return chunk_dicts
 
-# ----------------------------
+
 # Embedding Model
-# ----------------------------
 def load_gemma_model():
     model = SentenceTransformer("google/embeddinggemma-300m")
     return model
@@ -67,9 +63,8 @@ def embed_chunks(model, chunks):
     embeddings = model.encode(texts)      # batch encode
     return [emb.astype(np.float32).tolist() for emb in embeddings]
 
-# ----------------------------
+
 # Save to Supabase
-# ----------------------------
 def save_md_and_chunks(chunks: list, embeddings: list, pdf_id: str, batch_size: int = 50):
     """
     Save Markdown chunks with embeddings and heading metadata to Supabase.
@@ -95,9 +90,8 @@ def save_md_and_chunks(chunks: list, embeddings: list, pdf_id: str, batch_size: 
         
         print(f"Inserted chunk batch {i} -> {i + len(records) - 1}")
               
-# ----------------------------
+
 # Full pipeline
-# ----------------------------
 def process_markdown(md_path: str, pdf_id: str):
     # Read Markdown
     text = read_markdown(md_path)

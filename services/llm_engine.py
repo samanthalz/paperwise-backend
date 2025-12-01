@@ -1,10 +1,9 @@
-# llm_engine.py
 import fitz  # PyMuPDF
 import google.generativeai as genai
 import re
 
 class RAG:
-    def __init__(self, retriever, llm_name="gemini-2.5-flash-lite-preview-09-2025", api_key=None):
+    def __init__(self, retriever, llm_name="gemini-2.5-flash-preview-09-2025", api_key=None):
         if not api_key:
             raise ValueError("Gemini API key required")
         genai.configure(api_key=api_key)
@@ -36,7 +35,7 @@ Answer:"""
         return re.sub(r'\s+', ' ', (t or "")).strip()
 
     def _keyword_score(self, text: str, query: str):
-        # simple heuristic: number of query words found (can be improved)
+        # simple heuristic: number of query words found
         qwords = [w for w in re.findall(r'\w+', query.lower()) if len(w) > 2]
         lower = text.lower()
         return sum(1 for w in qwords if w in lower)
@@ -53,7 +52,7 @@ Answer:"""
         for c in chunks:
             text = c.get("chunk_text", "") or ""
             sim = float(c.get("similarity", 0.0))
-            # base score = similarity (assumes similarity in 0..1; adjust if distance)
+            # base score = similarity (assumes similarity in 0..1)
             score = sim
 
             # keyword overlap boost
@@ -121,7 +120,7 @@ Answer:"""
         response = model.generate_content(
             prompt,
             stream=True,
-            generation_config={"max_output_tokens": 300}
+            generation_config={"max_output_tokens": 1024}
         )
 
         try:
@@ -171,25 +170,33 @@ Answer:"""
         keypoints = {}
         for section in sections:
             prompt = f"""
-Context (entire paper):
------------------------
+Context (entire paper, cleaned of chunk labels):
+------------------------------------------------
 {full_text}
------------------------
+------------------------------------------------
 
-Instruction: Based on the entire paper, extract a concise {section}.
-- Understand from the entire paper's content.
-- Do not just repeat sentences from the paper; infer the section's meaning.
-- If the information is not explicitly present, respond with "Not mentioned".
-- The context may contain Markdown headings or formatting (like *, **, _, etc.). Ignore all such formatting symbols and do not include them in your answer.
+Instruction:
+Extract a concise {section} based on the entire paper.
+- Infer meaning; do not repeat sentences.
+- Do NOT mention chunks, page numbers, or headings.
+- Ignore all formatting symbols (*, **, _, etc.).
+- If unclear or missing, respond "Not mentioned".
 """
 
             try:
                 response = model.generate_content(
                     prompt,
                     stream=False,
-                    generation_config={"max_output_tokens": 500}
+                    generation_config={"max_output_tokens": 2048}
                 )
-                keypoints[section] = getattr(response, "text", "").strip() or "Not mentioned"
+                raw = getattr(response, "text", "").strip() or "Not mentioned"
+                
+                clean = re.sub(r"\*{1,2}", "", raw)    # remove * and **
+                clean = re.sub(r"_+", "", clean)       # remove _
+                clean = re.sub(r"`+", "", clean)       # remove `
+                clean = re.sub(r"#", "", clean)        # remove #
+
+                keypoints[section] = clean
             except Exception as e:
                 print(f"Failed to extract {section}: {e}")
                 keypoints[section] = " Failed"
@@ -247,11 +254,11 @@ Instruction: Based on the entire paper, extract a concise {section}.
     - Respond with only the title (no extra text).
     - If not found, respond exactly with "Not mentioned".
     """
-            response = model.generate_content(title_prompt, stream=False, generation_config={"max_output_tokens": 100})
+            response = model.generate_content(title_prompt, stream=False, generation_config={"max_output_tokens": 500})
             title = getattr(response, "text", "").strip()
             extracted["title"] = None if not title or title.lower() == "not mentioned" else title
         except Exception as e:
-            print(f"❌ Failed to extract title: {e}")
+            print(f"Failed to extract title: {e}")
 
         # Extract AUTHORS
         try:
@@ -277,17 +284,18 @@ Instruction: Based on the entire paper, extract a concise {section}.
         try:
             abstract_text = ""
             abstract_patterns = [
-                # Case 1: Abstract followed by Keywords / Introduction
-                r"(?is)\babstract\b[:\-]?\s*(.+?)(?=\n\s*(keywords|introduction|1[\s\.]|i[\s\.]|background)\b)",
-                # Case 2: Abstract till double newline or end of section
-                r"(?is)\babstract\b[:\-]?\s*([\s\S]{0,1500}?)(?=\n{2,}|$)"
+                # Case 1: Abstract followed by optional punctuation or whitespace, start from first word after (allow lowercase)
+                r"(?is)\babstract\b[\s:–—-]*\n*([A-Za-z][\s\S]+?)(?=\n\s*(keywords|index terms|introduction|1[\s\.]|i[\s\.]|background)\b)",
+                
+                # Case 2: Abstract till double newline or end of section (fallback)
+                r"(?is)\babstract\b[\s:–—-]*([\s\S]{0,1500}?)(?=\n{2,}|$)"
             ]
 
             for pattern in abstract_patterns:
                 match = re.search(pattern, full_text)
                 if match:
                     abstract_text = match.group(1).strip()
-                    # Stop at the first match that looks reasonable (not too long)
+                    # Stop at the first match that looks reasonable 
                     if 100 < len(abstract_text) < 2000:
                         break
 
@@ -310,9 +318,8 @@ Instruction: Based on the entire paper, extract a concise {section}.
     Write a concise academic-style summary (like an abstract).
     - Use clear, objective tone.
     - Remove all formatting symbols (*, **, _, etc.).
-    - If unclear, respond "Not mentioned".
     """
-                response = model.generate_content(summary_prompt, stream=False, generation_config={"max_output_tokens": 500})
+                response = model.generate_content(summary_prompt, stream=False, generation_config={"max_output_tokens": 2048})
                 summary = getattr(response, "text", "").strip() or "Not mentioned"
                 extracted["summary"] = summary
                 extracted["summary_source"] = "generated"
@@ -323,4 +330,3 @@ Instruction: Based on the entire paper, extract a concise {section}.
             extracted["summary_source"] = "error"
 
         return extracted
-
