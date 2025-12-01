@@ -88,7 +88,9 @@ The system architecture consists of four interconnected layers:
 * Displays papers, recommendations, and interactive chat
 * Sends all requests (paper details, Q&A, search, recommendations) to the backend
 
-### **2️⃣ Backend (FastAPI — This repo)**
+> Frontend repository: [PaperWise Frontend Repository](https://github.com/samanthalz/paperwise-frontend)
+
+### **2️⃣ Backend (FastAPI)**
 
 Functions as the **orchestrator** of the entire system:
 
@@ -138,6 +140,7 @@ paperwise-backend/
 │── requirements.txt
 │── README.md
 ```
+
 ---
 
 ## 📜 Copyright
@@ -153,3 +156,4 @@ any medium, is strictly prohibited.
 No license is granted to use, distribute, or modify this software unless
 explicit written permission is obtained from the copyright holder.
 
+---
